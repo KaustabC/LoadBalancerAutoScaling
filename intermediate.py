@@ -10,22 +10,47 @@ import trial_2_pb2_grpc
 class Server(trial_1_pb2_grpc.AlertServicer):
     def __init__(self):
         self.port_end = "50051"
+        self.IP_addr_end = "localhost"
 
     def InvokeMethod(self, request, context):
         # make grpc call based on function to localhost:port_end (later can be changed to actual IP address):
         logger.debug("Received function call for function: " + str(request.function))
         if request.function == 0:
-            with grpc.insecure_channel("localhost:" + self.port_end) as channel:
+            with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
                 response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1, function=request.function))
-                logger.debug("Factorial value: " + str(response.val))
+                logger.debug("Echoed value: " + str(response.val))
         
-        else:
-            with grpc.insecure_channel("localhost:" + self.port_end) as channel:
+        elif request.function == 1:
+            with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
                 response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1, data2 = request.data2,function=request.function))
                 logger.debug("Calculated simple interest value: " + str(response.val))
 
+        elif request.function == 2:
+            with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
+                stub = trial_2_pb2_grpc.AlertStub(channel)
+                response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1,function=request.function))
+                logger.debug("Computed tax value: " + str(response.val))
+                
+        elif request.function == 3:
+            with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
+                stub = trial_2_pb2_grpc.AlertStub(channel)
+                response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1,data2=request.data2,function=request.function))
+                logger.debug("Computed emi value: " + str(response.val))
+                
+        elif request.function == 4:
+            with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
+                stub = trial_2_pb2_grpc.AlertStub(channel)
+                response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1,data2=request.data2,function=request.function))
+                logger.debug("Estimated returns on FD: " + str(response.val))
+                
+        elif request.function == 5:
+            with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
+                stub = trial_2_pb2_grpc.AlertStub(channel)
+                response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1,data2=request.data2,function=request.function))
+                logger.debug("Converted value in the target currency: " + str(response.val))
+                
         return trial_1_pb2.returnValue(val = response.val)
 
 

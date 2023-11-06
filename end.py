@@ -1,21 +1,19 @@
 import logging
-import math
 from concurrent import futures
 import grpc
 import trial_2_pb2
 import trial_2_pb2_grpc
-
+import service
 
 
 class Server(trial_2_pb2_grpc.AlertServicer):
     def __init__(self):
-        self.rate = 0.05
-    
-    def evaluate_function_0(self, data1):
-        return math.factorial(data1) * 1.00
+        self.interest_rate = 0.05
+        self.emi_rate = 0.07
+        self.FD_rate = 0.10
     
     def evaluate_function_1(self, data1, data2):
-        return data1*self.rate*data2
+        return data1*self.interest_rate*data2
     
     def RelayClientMessage(self, request, context):
         logger.debug("Received request from intermediate node")
@@ -23,10 +21,18 @@ class Server(trial_2_pb2_grpc.AlertServicer):
 
         val = 0
         
-        if(request.function == 0):
-            val = self.evaluate_function_0(data1 = request.data1)
-        else:
+        if request.function == 0:
+            val = request.data1
+        elif request.function == 1:
             val = self.evaluate_function_1(data1 = request.data1, data2 = request.data2)
+        elif request.function == 2:
+            val = service.taxComputation(income_rs = request.data1)
+        elif request.function == 3:
+            val = service.emiCalculator(loan_amount_rs = request.data1, rate_pa = self.emi_rate, tenure_yrs = request.data2)
+        elif request.function == 4:
+            val = service.FDReturnsCalculator(investment_rs = request.data1, rate_pa = self.FD_rate, tenure_yrs = request.data2)
+        elif request.function == 5:
+            val = service.currencyConverter(amount = request.data1, currency = request.data2)
 
         return trial_2_pb2.returnValue(val = val)
     
