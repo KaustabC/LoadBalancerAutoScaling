@@ -1,0 +1,26 @@
+// Proto file for connection between the client and intermediate balancer
+// python3 -m grpc_tools.protoc -I. --python_out=. --pyi_out=. --grpc_python_out=. trial_1.proto
+
+syntax = "proto3";
+package trial_1;
+
+// To store the message from the client
+message function_message
+{
+    optional int32 data1 = 1;
+    optional int32 data2 = 2;
+    optional int32 function = 3;
+}
+
+message returnValue
+{
+    optional float val = 1;
+}
+
+// Void message for when nothing actually needs to be returned
+message void {}
+
+service Alert
+{
+    rpc InvokeMethod(function_message) returns (returnValue) {}
+}
