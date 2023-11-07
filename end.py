@@ -1,6 +1,8 @@
 import logging
 from concurrent import futures
 import grpc
+import trial_1_pb2
+import trial_1_pb2_grpc
 import trial_2_pb2
 import trial_2_pb2_grpc
 import service
@@ -39,9 +41,9 @@ class Server(trial_2_pb2_grpc.AlertServicer):
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     trial_2_pb2_grpc.add_AlertServicer_to_server(Server(), server)
-    server.add_insecure_port('[::]:50051')
+    server.add_insecure_port('[::]:70070')
     server.start()
-    print("Server started listening on port 50051")
+    print("Server started listening on port 70070")
     server.wait_for_termination()
     
 if __name__ == "__main__":
