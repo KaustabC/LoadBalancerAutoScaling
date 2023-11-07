@@ -5,12 +5,15 @@ import trial_1_pb2
 import trial_1_pb2_grpc
 import trial_2_pb2
 import trial_2_pb2_grpc
+from heapq import heapify, heappush, heappop
 
 
 class Server(trial_1_pb2_grpc.AlertServicer):
     def __init__(self):
-        self.port_end = "50051"
+        self.port_end = "70070"
         self.IP_addr_end = "localhost"
+        self.heap = []
+        heapify(self.heap)
 
     def InvokeMethod(self, request, context):
         # make grpc call based on function to localhost:port_end (later can be changed to actual IP address):
@@ -53,6 +56,12 @@ class Server(trial_1_pb2_grpc.AlertServicer):
                 
         return trial_1_pb2.returnValue(val = response.val)
 
+        
+    def RegisterMachine(self, request, context):
+        heappush(self.heap, (0, request.ip, request.port))
+        heapify(self.heap)
+        return trial_1_pb2.void()
+
 
 def serve():
     # Initialising the connector server
@@ -60,7 +69,8 @@ def serve():
     trial_1_pb2_grpc.add_AlertServicer_to_server(
         Server(), server
     )
-    port = 50050 
+    
+    port = 60060 
 
     # Starting the server
     server.add_insecure_port("[::]:" + str(port))
