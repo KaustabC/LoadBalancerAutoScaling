@@ -5,14 +5,14 @@ syntax = "proto3";
 package trial_2;
 
 // To store the message fromm the client
-message function_message
+message FunctionMessage
 {
     optional int32 data1 = 1;
     optional int32 data2 = 2;
     optional int32 function = 3;
 }
 
-message returnValue
+message ReturnValue
 {
     optional float val = 1;
 }
@@ -22,5 +22,5 @@ message void {}
 
 service Alert
 {
-    rpc RelayClientMessage(function_message) returns (returnValue) {}
+    rpc RelayClientMessage(FunctionMessage) returns (ReturnValue) {}
 }

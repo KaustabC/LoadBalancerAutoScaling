@@ -31,7 +31,7 @@ def run():
       
         with grpc.insecure_channel(IP_addr_intermediate + ":" + port_intermediate) as channel:
             stub = trial_1_pb2_grpc.AlertStub(channel)
-            response = stub.InvokeMethod(trial_1_pb2.function_message(data1=data1, function=function))
+            response = stub.InvokeMethod(trial_1_pb2.FunctionMessage(data1=data1, function=function))
             logger.debug("Echoed value: " + str(response.val))
             print("Echoed value: " + str(response.val))
           
@@ -42,7 +42,7 @@ def run():
       
         with grpc.insecure_channel(IP_addr_intermediate + ":" + port_intermediate) as channel:
             stub = trial_1_pb2_grpc.AlertStub(channel)
-            response = stub.InvokeMethod(trial_1_pb2.function_message(data1=data1, data2=data2, function=function))
+            response = stub.InvokeMethod(trial_1_pb2.FunctionMessage(data1=data1, data2=data2, function=function))
             logger.debug("Simple interest: " + str(response.val))
             print("Calculated simple interest value: " + str(response.val))
     
@@ -52,7 +52,7 @@ def run():
       
         with grpc.insecure_channel(IP_addr_intermediate + ":" + port_intermediate) as channel:
             stub = trial_1_pb2_grpc.AlertStub(channel)
-            response = stub.InvokeMethod(trial_1_pb2.function_message(data1=data1, function=function))
+            response = stub.InvokeMethod(trial_1_pb2.FunctionMessage(data1=data1, function=function))
             logger.debug("Tax: " + str(response.val))
             print("Computed tax value: " + str(response.val))
           
@@ -63,7 +63,7 @@ def run():
       
         with grpc.insecure_channel(IP_addr_intermediate + ":" + port_intermediate) as channel:
             stub = trial_1_pb2_grpc.AlertStub(channel)
-            response = stub.InvokeMethod(trial_1_pb2.function_message(data1=data1, data2=data2, function=function))
+            response = stub.InvokeMethod(trial_1_pb2.FunctionMessage(data1=data1, data2=data2, function=function))
             logger.debug("EMI calculated: " + str(response.val))
             print("Computed EMI value:: " + str(response.val))
           
@@ -74,7 +74,7 @@ def run():
       
         with grpc.insecure_channel(IP_addr_intermediate + ":" + port_intermediate) as channel:
             stub = trial_1_pb2_grpc.AlertStub(channel)
-            response = stub.InvokeMethod(trial_1_pb2.function_message(data1=data1, data2=data2, function=function))
+            response = stub.InvokeMethod(trial_1_pb2.FunctionMessage(data1=data1, data2=data2, function=function))
             logger.debug("Estimated returns: " + str(response.val))
             print("Estimated returns on FD: " + str(response.val))
           
@@ -90,7 +90,7 @@ def run():
       
         with grpc.insecure_channel(IP_addr_intermediate + ":" + port_intermediate) as channel:
             stub = trial_1_pb2_grpc.AlertStub(channel)
-            response = stub.InvokeMethod(trial_1_pb2.function_message(data1=data1, data2=data2, function=function))
+            response = stub.InvokeMethod(trial_1_pb2.FunctionMessage(data1=data1, data2=data2, function=function))
             logger.debug("Converted value: " + str(response.val))
             print("Converted value in the target currency: " + str(response.val))
 

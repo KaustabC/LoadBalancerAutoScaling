@@ -21,46 +21,49 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         if request.function == 0:
             with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
-                response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1, function=request.function))
+                response = stub.RelayClientMessage(trial_2_pb2.FunctionMessage(data1=request.data1, function=request.function))
                 logger.debug("Echoed value: " + str(response.val))
         
         elif request.function == 1:
             with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
-                response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1, data2 = request.data2,function=request.function))
+                response = stub.RelayClientMessage(trial_2_pb2.FunctionMessage(data1=request.data1, data2 = request.data2,function=request.function))
                 logger.debug("Calculated simple interest value: " + str(response.val))
 
         elif request.function == 2:
             with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
-                response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1,function=request.function))
+                response = stub.RelayClientMessage(trial_2_pb2.FunctionMessage(data1=request.data1,function=request.function))
                 logger.debug("Computed tax value: " + str(response.val))
                 
         elif request.function == 3:
             with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
-                response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1,data2=request.data2,function=request.function))
+                response = stub.RelayClientMessage(trial_2_pb2.FunctionMessage(data1=request.data1,data2=request.data2,function=request.function))
                 logger.debug("Computed emi value: " + str(response.val))
                 
         elif request.function == 4:
             with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
-                response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1,data2=request.data2,function=request.function))
+                response = stub.RelayClientMessage(trial_2_pb2.FunctionMessage(data1=request.data1,data2=request.data2,function=request.function))
                 logger.debug("Estimated returns on FD: " + str(response.val))
                 
         elif request.function == 5:
             with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
-                response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1,data2=request.data2,function=request.function))
+                response = stub.RelayClientMessage(trial_2_pb2.FunctionMessage(data1=request.data1,data2=request.data2,function=request.function))
                 logger.debug("Converted value in the target currency: " + str(response.val))
                 
-        return trial_1_pb2.returnValue(val = response.val)
+        return trial_1_pb2.ReturnValue(val = response.val)
 
         
     def RegisterMachine(self, request, context):
         heappush(self.heap, (0, request.ip, request.port))
         heapify(self.heap)
         return trial_1_pb2.void()
+    
+    # Implement scale-up and scale-down RPC logic here
+    
 
 
 def serve():

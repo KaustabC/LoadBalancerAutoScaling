@@ -5,23 +5,22 @@ syntax = "proto3";
 package trial_1;
 
 // To store the message from the client
-message function_message
+message FunctionMessage
 {
     optional int32 data1 = 1;
     optional int32 data2 = 2;
     optional int32 function = 3;
 }
 
-message returnValue
+message ReturnValue
 {
     optional float val = 1;
 }
 
 // Additional message type for end machines to register themselves at the intermediate
-message machineInfo
+message MachineInfo
 {
     optional string ip = 1;
-    optional int32 port = 2;
 }
 
 // Void message for when nothing actually needs to be returned
@@ -29,6 +28,6 @@ message void {}
 
 service Alert
 {
-    rpc InvokeMethod(function_message) returns (returnValue) {}
-    rpc RegisterMachine(machineInfo) returns (void) {}
+    rpc InvokeMethod(FunctionMessage) returns (ReturnValue) {}
+    rpc RegisterMachine(MachineInfo) returns (void) {}
 }
