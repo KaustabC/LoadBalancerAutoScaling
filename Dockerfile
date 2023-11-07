@@ -12,7 +12,16 @@ RUN pip install grpcio
 RUN pip install grpcio-tools
 
 # Expose the port on which the gRPC server runs
-EXPOSE 50051
+EXPOSE 90090
+EXPOSE 90091
+EXPOSE 90092
+EXPOSE 90093
+EXPOSE 90094
+EXPOSE 90095
+EXPOSE 90096
+EXPOSE 90097
+EXPOSE 90098
+EXPOSE 90099
 
 # Set the environment variable for Python to run the server code
 CMD ["python", "end.py"]
