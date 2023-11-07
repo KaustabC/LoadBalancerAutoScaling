@@ -17,10 +17,18 @@ message returnValue
     optional float val = 1;
 }
 
+// Additional message type for end machines to register themselves at the intermediate
+message machineInfo
+{
+    optional string ip = 1;
+    optional int32 port = 2;
+}
+
 // Void message for when nothing actually needs to be returned
 message void {}
 
 service Alert
 {
     rpc InvokeMethod(function_message) returns (returnValue) {}
+    rpc RegisterMachine(machineInfo) returns (void) {}
 }
