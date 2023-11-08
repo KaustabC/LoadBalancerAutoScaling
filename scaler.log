@@ -1,31 +1,22 @@
-2023-11-09 00:12:35,645 check 
-2023-11-09 00:12:35,664 Server started listening on port 50050...
-2023-11-09 00:12:42,618 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-09 00:12:42,618 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-09 00:12:42,618 Found 'credsStore' section
-2023-11-09 00:12:42,642 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-09 00:12:42,650 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
-2023-11-09 00:12:42,908 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer HTTP/1.1" 201 None
-2023-11-09 00:12:42,920 http://localhost:None "GET /v1.43/containers/db29c060498db8bfd7170b08eb24ae0d7b693e2df3f2e9b301e5bed6f77a94ba/json HTTP/1.1" 200 None
-2023-11-09 00:12:44,251 http://localhost:None "POST /v1.43/containers/db29c060498db8bfd7170b08eb24ae0d7b693e2df3f2e9b301e5bed6f77a94ba/start HTTP/1.1" 204 0
-2023-11-09 00:12:44,254 End Server container started.
-2023-11-09 00:12:44,254 Received function call for function: 1
-2023-11-09 00:12:46,515 Exception calling application: <_InactiveRpcError of RPC that terminated with:
-	status = StatusCode.UNAVAILABLE
-	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:172.17.75.214:50051: Connection refused"
-	debug_error_string = "UNKNOWN:failed to connect to all addresses; last error: UNAVAILABLE: ipv4:172.17.75.214:50051: Connection refused {created_time:"2023-11-08T18:42:46.3499965+00:00", grpc_status:14}"
->
-Traceback (most recent call last):
-  File "C:\Python310\lib\site-packages\grpc\_server.py", line 552, in _call_behavior
-    response_or_iterator = behavior(argument, context)
-  File "C:\Users\harsh\Documents\GitHub\LoadBalancerAutoScaling\scaler.py", line 46, in InvokeMethod
-    response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1, data2 = request.data2,function=request.function))
-  File "C:\Python310\lib\site-packages\grpc\_channel.py", line 1161, in __call__
-    return _end_unary_response_blocking(state, call, False, None)
-  File "C:\Python310\lib\site-packages\grpc\_channel.py", line 1004, in _end_unary_response_blocking
-    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
-grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
-	status = StatusCode.UNAVAILABLE
-	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:172.17.75.214:50051: Connection refused"
-	debug_error_string = "UNKNOWN:failed to connect to all addresses; last error: UNAVAILABLE: ipv4:172.17.75.214:50051: Connection refused {created_time:"2023-11-08T18:42:46.3499965+00:00", grpc_status:14}"
->
+2023-11-09 04:21:45,237 check 
+2023-11-09 04:21:45,245 Server started listening on port 50050...
+2023-11-09 04:21:57,663 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-09 04:21:57,663 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-09 04:21:57,664 Found 'credsStore' section
+2023-11-09 04:21:57,679 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-09 04:21:57,685 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
+2023-11-09 04:21:57,696 http://localhost:None "GET /v1.43/containers/8a085e1a719dbc63305c52602fc49065f1d9988cb9f959ec7fd9bbe98bb61ed1/json HTTP/1.1" 200 None
+2023-11-09 04:21:57,698 End Server container is already running.
+2023-11-09 04:21:57,699 Received function call for function: 1
+2023-11-09 04:21:57,746 Calculated simple interest value: 1250.0
+2023-11-09 04:22:19,914 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-09 04:22:19,915 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-09 04:22:19,915 Found 'credsStore' section
+2023-11-09 04:22:19,930 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-09 04:22:19,936 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
+2023-11-09 04:22:19,987 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer HTTP/1.1" 201 None
+2023-11-09 04:22:19,994 http://localhost:None "GET /v1.43/containers/f6a1f3dcff451bc56b6407eabf68896a431d4b4689b3d3d24338173f7cbb8a9c/json HTTP/1.1" 200 None
+2023-11-09 04:22:20,410 http://localhost:None "POST /v1.43/containers/f6a1f3dcff451bc56b6407eabf68896a431d4b4689b3d3d24338173f7cbb8a9c/start HTTP/1.1" 204 0
+2023-11-09 04:22:20,411 End Server container started.
+2023-11-09 04:22:20,411 Received function call for function: 1
+2023-11-09 04:22:20,928 Calculated simple interest value: 2500.0
