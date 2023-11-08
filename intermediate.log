@@ -1,3 +1,21 @@
-2023-11-06 19:11:30,460 Server started listening on port 50050...
-2023-11-06 19:11:48,708 Received function call for function: 1
-2023-11-06 19:11:48,737 Calculated simple interest value: 200000.0
+2023-11-09 00:15:51,763 Server started listening on port 50050...
+2023-11-09 00:16:05,170 Received function call for function: 1
+2023-11-09 00:16:07,299 Exception calling application: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:172.17.75.214:50051: Connection refused"
+	debug_error_string = "UNKNOWN:failed to connect to all addresses; last error: UNAVAILABLE: ipv4:172.17.75.214:50051: Connection refused {grpc_status:14, created_time:"2023-11-08T18:46:07.2350277+00:00"}"
+>
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\grpc\_server.py", line 552, in _call_behavior
+    response_or_iterator = behavior(argument, context)
+  File "C:\Users\harsh\Documents\GitHub\LoadBalancerAutoScaling\intermediate.py", line 29, in InvokeMethod
+    response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1, data2 = request.data2,function=request.function))
+  File "C:\Python310\lib\site-packages\grpc\_channel.py", line 1161, in __call__
+    return _end_unary_response_blocking(state, call, False, None)
+  File "C:\Python310\lib\site-packages\grpc\_channel.py", line 1004, in _end_unary_response_blocking
+    raise _InactiveRpcError(state)  # pytype: disable=not-instantiable
+grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
+	status = StatusCode.UNAVAILABLE
+	details = "failed to connect to all addresses; last error: UNAVAILABLE: ipv4:172.17.75.214:50051: Connection refused"
+	debug_error_string = "UNKNOWN:failed to connect to all addresses; last error: UNAVAILABLE: ipv4:172.17.75.214:50051: Connection refused {grpc_status:14, created_time:"2023-11-08T18:46:07.2350277+00:00"}"
+>

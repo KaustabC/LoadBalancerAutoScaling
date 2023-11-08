@@ -1,0 +1,19 @@
+# Use the official Python image from the Docker Hub
+FROM python:3.8
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the protobuf files and Python code to the container
+COPY . /app
+
+
+# Install required dependencies
+RUN pip install grpcio
+RUN pip install grpcio-tools
+
+# Expose the port used by your server
+EXPOSE 50050
+
+# Set the environment variable for Python to run the server code
+CMD ["python", "intermediate.py"]

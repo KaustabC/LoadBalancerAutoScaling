@@ -5,16 +5,33 @@ import trial_1_pb2
 import trial_1_pb2_grpc
 import trial_2_pb2
 import trial_2_pb2_grpc
-
+import docker
 
 class Server(trial_1_pb2_grpc.AlertServicer):
     def __init__(self):
         self.port_end = "50051"
-        # self.IP_addr_end = "172.17.75.214"
-        self.IP_addr_end = "endserverContainer" #for dockerised intermediate
+        self.IP_addr_end = "endserverContainer"
+    def start_end_server_container(self):
+        # Docker client setup
+        docker_client = docker.from_env()
 
+        # Check if End Server container is running, if not, start the container
+        containers = docker_client.containers.list(all=True, filters={"name": "endserverContainer"})
+        # print(containers)
+        if not containers:
+            docker_client.containers.run("endserver", name="endserverContainer", detach=True, network="cloudtemp")
+            print("End Server container started.")
+            logger.debug("End Server container started.")
+        else:
+            print("End Server container is already running.")
+            logger.debug("End Server container is already running.")
+
+        self.IP_addr_end = "endserverContainer"  # Update the IP address to the container name
 
     def InvokeMethod(self, request, context):
+        #to start end server container if its not already running
+        self.start_end_server_container()
+
         # make grpc call based on function to localhost:port_end (later can be changed to actual IP address):
         logger.debug("Received function call for function: " + str(request.function))
         if request.function == 0:
@@ -75,11 +92,13 @@ def serve():
 if __name__ == "__main__":
     # Intitialising the logger
     logging.basicConfig(
-        filename="intermediate.log",
+        filename="scaler.log",
         format="%(asctime)s %(message)s",
         filemode="w",
     )
 
     logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)
+    logger.debug("check ")
+
     serve()
