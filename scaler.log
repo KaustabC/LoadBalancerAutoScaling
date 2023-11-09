@@ -1,22 +1,6 @@
-2023-11-09 04:21:45,237 check 
-2023-11-09 04:21:45,245 Server started listening on port 50050...
-2023-11-09 04:21:57,663 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-09 04:21:57,663 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-09 04:21:57,664 Found 'credsStore' section
-2023-11-09 04:21:57,679 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-09 04:21:57,685 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
-2023-11-09 04:21:57,696 http://localhost:None "GET /v1.43/containers/8a085e1a719dbc63305c52602fc49065f1d9988cb9f959ec7fd9bbe98bb61ed1/json HTTP/1.1" 200 None
-2023-11-09 04:21:57,698 End Server container is already running.
-2023-11-09 04:21:57,699 Received function call for function: 1
-2023-11-09 04:21:57,746 Calculated simple interest value: 1250.0
-2023-11-09 04:22:19,914 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-09 04:22:19,915 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-09 04:22:19,915 Found 'credsStore' section
-2023-11-09 04:22:19,930 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-09 04:22:19,936 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
-2023-11-09 04:22:19,987 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer HTTP/1.1" 201 None
-2023-11-09 04:22:19,994 http://localhost:None "GET /v1.43/containers/f6a1f3dcff451bc56b6407eabf68896a431d4b4689b3d3d24338173f7cbb8a9c/json HTTP/1.1" 200 None
-2023-11-09 04:22:20,410 http://localhost:None "POST /v1.43/containers/f6a1f3dcff451bc56b6407eabf68896a431d4b4689b3d3d24338173f7cbb8a9c/start HTTP/1.1" 204 0
-2023-11-09 04:22:20,411 End Server container started.
-2023-11-09 04:22:20,411 Received function call for function: 1
-2023-11-09 04:22:20,928 Calculated simple interest value: 2500.0
+2023-11-09 17:31:32,280 check1
+2023-11-09 17:31:32,280 check2
+2023-11-09 17:31:32,289 check3
+2023-11-09 17:31:32,291 check4
+2023-11-09 17:31:32,293 check5
+2023-11-09 17:31:32,294 Server started listening on port 50050...

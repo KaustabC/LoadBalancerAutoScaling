@@ -6,10 +6,10 @@ import trial_1_pb2_grpc
 import trial_2_pb2
 import trial_2_pb2_grpc
 import docker
-
+from time import sleep
 class Server(trial_1_pb2_grpc.AlertServicer):
     def __init__(self):
-        self.port_end = "50051"
+        self.port_end = "50053"
         self.IP_addr_end = "endserverContainer"
     def start_end_server_container(self):
         logger.debug("check65")
@@ -22,21 +22,21 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         # print(containers)
         logger.debug("check7")
         if not containers:
-            docker_client.containers.run("endserver", name="endserverContainer", detach=True, network="cloudtemp",ports={'50051/tcp':'50051'})
-            print("End Server container started.")
+            docker_client.containers.run("endserver", name="endserverContainer", detach=True, network="cloudtemp",ports={'50051/tcp':'50053'})
+            sleep(1)
+            print("End Server container was not running, has been started.")
             logger.debug("End Server container started.")
         else:
             print("End Server container is already running.")
             logger.debug("End Server container is already running.")
         logger.debug("check8")
-        self.IP_addr_end = "endserverContainer"  # Update the IP address to the container name
+        self.IP_addr_end = "172.17.75.214"  # Update the IP address to the container name
 
     def InvokeMethod(self, request, context):
         #to start end server container if its not already running
         logger.debug("check9")
         self.start_end_server_container()
         logger.debug("check10")
-
         # make grpc call based on function to localhost:port_end (later can be changed to actual IP address):
         logger.debug("Received function call for function: " + str(request.function))
         with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:

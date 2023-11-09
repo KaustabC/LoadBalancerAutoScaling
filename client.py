@@ -11,7 +11,7 @@ logging.basicConfig(filename="client.log",
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
-IP_addr_intermediate = "localhost"
+IP_addr_intermediate = "172.17.75.214"
 port_intermediate = "50050"
 
 def run():
