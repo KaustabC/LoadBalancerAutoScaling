@@ -9,12 +9,13 @@ import docker
 from time import sleep
 class Server(trial_1_pb2_grpc.AlertServicer):
     def __init__(self):
-        self.port_end = "50053"
+        self.port_end = "50051"
         self.IP_addr_end = "endserverContainer"
     def start_end_server_container(self):
         logger.debug("check65")
         # Docker client setup
         docker_client = docker.from_env()
+        sleep(1)
         logger.debug("check6")
 
         # Check if End Server container is running, if not, start the container
@@ -30,7 +31,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
             print("End Server container is already running.")
             logger.debug("End Server container is already running.")
         logger.debug("check8")
-        self.IP_addr_end = "172.17.75.214"  # Update the IP address to the container name
+        self.IP_addr_end = "endserverContainer"  # Update the IP address to the container name
 
     def InvokeMethod(self, request, context):
         #to start end server container if its not already running
@@ -79,7 +80,7 @@ def serve():
         Server(), server
     )
     logger.debug("check4")
-    port = 50050 
+    port = 50050
 
     # Starting the server
     server.add_insecure_port("[::]:" + str(port))
