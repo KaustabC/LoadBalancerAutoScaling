@@ -7,15 +7,31 @@ import trial_2_pb2
 import trial_2_pb2_grpc
 import docker
 from time import sleep
+
 class Server(trial_1_pb2_grpc.AlertServicer):
-    def __init__(self):
-        self.port_end = "50051"
-        self.IP_addr_end = "endserverContainer"
+    def __init__(self):        
+        self.IP_addr_end = "localhost"
+        self.containers_and_load = {}
+        self.first_run = True
+        self.start_end_server_container()
+    
+    def first_free_container_port(self):
+        for i in range(50051, 50060):
+            if str(i) not in self.containers_and_load:
+                return str(i)
+    
+    def add_end_server_container(self):
+        docker_client = docker.from_env()
+        free = self.first_free_container_port(self)
+        docker_client.containers.run("endserver", name="endserverContainer"+free, detach=True, network="cloudtemp", ports={'50051/tcp':free})
+        self.containers_and_load[free] = 0
+        sleep(1)
+        return free
+    
     def start_end_server_container(self):
         logger.debug("check65")
         # Docker client setup
         docker_client = docker.from_env()
-        sleep(1)
         logger.debug("check6")
 
         # Check if End Server container is running, if not, start the container
@@ -23,24 +39,24 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         # print(containers)
         logger.debug("check7")
         if not containers:
-            docker_client.containers.run("endserver", name="endserverContainer", detach=True, network="cloudtemp",ports={'50051/tcp':'50053'})
-            sleep(1)
-            print("End Server container was not running, has been started.")
-            logger.debug("End Server container started.")
+            free = self.first_free_container_port()
+            docker_client.containers.run("endserversleep", name="endserverContainer"+free, detach=True, network="cloudtemp",ports={'50051/tcp':free})
+            self.containers_and_load[free] = 0
+            free = self.first_free_container_port()
+            docker_client.containers.run("endserversleep", name="endserverContainer"+free, detach=True, network="cloudtemp",ports={'50051/tcp':free})
+            self.containers_and_load[free] = 0
+            print("Primary end server containers started.")
+            logger.debug("Primary end server containers started.")
         else:
-            print("End Server container is already running.")
-            logger.debug("End Server container is already running.")
+            print("Primary end server containers are already running. System must be restarted.")
+            logger.debug("Primary end server containers are already running. System must be restarted.")
         logger.debug("check8")
-        self.IP_addr_end = "endserverContainer"  # Update the IP address to the container name
-
-    def InvokeMethod(self, request, context):
-        #to start end server container if its not already running
-        logger.debug("check9")
-        self.start_end_server_container()
-        logger.debug("check10")
+        # self.IP_addr_end = "endserverContainer"  # Update the IP address to the container name
+    
+    def issueJob(self, request, port, context):
         # make grpc call based on function to localhost:port_end (later can be changed to actual IP address):
         logger.debug("Received function call for function: " + str(request.function))
-        with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
+        with grpc.insecure_channel(self.IP_addr_end + ":" + port) as channel:
             stub = trial_2_pb2_grpc.AlertStub(channel)
             if request.function == 0:
                 response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1, function=request.function))
@@ -69,6 +85,19 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         logger.debug("check10")
 
         return trial_1_pb2.returnValue(val = response.val)
+    
+    def InvokeMethod(self, request, context):
+        # Perform load balancing here across the end server containers that are running to determine which end server to issue the job to
+        
+        # Find key with minimum value from dictionary
+        selected_port = min(self.containers_and_load, key=self.containers_and_load.get)
+        print("Issuing job to end server container: " + selected_port)
+        
+        self.containers_and_load[selected_port] += 1
+        return_val = self.issueJob(request, selected_port, context)
+        self.containers_and_load[selected_port] -= 1
+        
+        return return_val
 
 
 def serve():
@@ -80,7 +109,7 @@ def serve():
         Server(), server
     )
     logger.debug("check4")
-    port = 50050
+    port = 50050 
 
     # Starting the server
     server.add_insecure_port("[::]:" + str(port))

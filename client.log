@@ -1,2 +1,3 @@
-2023-11-10 13:51:37,507 Client is requesting function: 1
-2023-11-10 13:51:39,867 Sending values: 5000, 10
+2023-11-10 15:13:54,406 Client is requesting function: 0
+2023-11-10 15:14:11,939 Sending values: 76
+2023-11-10 15:14:17,036 Echoed value: 76.0
