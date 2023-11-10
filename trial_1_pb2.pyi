@@ -5,14 +5,34 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class function_message(_message.Message):
-    __slots__ = ["data1", "data2", "function"]
+    __slots__ = ["data1", "data2", "function", "ip"]
     DATA1_FIELD_NUMBER: _ClassVar[int]
     DATA2_FIELD_NUMBER: _ClassVar[int]
     FUNCTION_FIELD_NUMBER: _ClassVar[int]
+    IP_FIELD_NUMBER: _ClassVar[int]
     data1: int
     data2: int
     function: int
-    def __init__(self, data1: _Optional[int] = ..., data2: _Optional[int] = ..., function: _Optional[int] = ...) -> None: ...
+    ip: str
+    def __init__(self, data1: _Optional[int] = ..., data2: _Optional[int] = ..., function: _Optional[int] = ..., ip: _Optional[str] = ...) -> None: ...
+
+class initMessage(_message.Message):
+    __slots__ = ["loadType", "autoType", "services"]
+    LOADTYPE_FIELD_NUMBER: _ClassVar[int]
+    AUTOTYPE_FIELD_NUMBER: _ClassVar[int]
+    SERVICES_FIELD_NUMBER: _ClassVar[int]
+    loadType: int
+    autoType: int
+    services: str
+    def __init__(self, loadType: _Optional[int] = ..., autoType: _Optional[int] = ..., services: _Optional[str] = ...) -> None: ...
+
+class initReply(_message.Message):
+    __slots__ = ["port", "services"]
+    PORT_FIELD_NUMBER: _ClassVar[int]
+    SERVICES_FIELD_NUMBER: _ClassVar[int]
+    port: int
+    services: str
+    def __init__(self, port: _Optional[int] = ..., services: _Optional[str] = ...) -> None: ...
 
 class returnValue(_message.Message):
     __slots__ = ["val"]

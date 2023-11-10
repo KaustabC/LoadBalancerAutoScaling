@@ -1,28 +1,9 @@
-2023-11-10 15:13:51,544 check1
-2023-11-10 15:13:51,544 check2
-2023-11-10 15:13:51,544 check3
-2023-11-10 15:13:51,544 check65
-2023-11-10 15:13:51,544 Trying paths: ['C:\\Users\\kaust\\.docker\\config.json', 'C:\\Users\\kaust\\.dockercfg']
-2023-11-10 15:13:51,544 Found file at path: C:\Users\kaust\.docker\config.json
-2023-11-10 15:13:51,544 Found 'credsStore' section
-2023-11-10 15:13:51,772 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-10 15:13:51,774 check6
-2023-11-10 15:13:51,795 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
-2023-11-10 15:13:51,800 check7
-2023-11-10 15:13:54,061 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50051 HTTP/1.1" 201 None
-2023-11-10 15:13:54,080 http://localhost:None "GET /v1.43/containers/4886124982f17ce1327aac1e672708e0f4a9106429ff424225599e9fb66100b3/json HTTP/1.1" 200 None
-2023-11-10 15:14:01,361 http://localhost:None "POST /v1.43/containers/4886124982f17ce1327aac1e672708e0f4a9106429ff424225599e9fb66100b3/start HTTP/1.1" 204 0
-2023-11-10 15:14:03,599 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50052 HTTP/1.1" 201 None
-2023-11-10 15:14:03,614 http://localhost:None "GET /v1.43/containers/218609bda952e140567f0586e4387060f1868c103e40678be7ca542719fc8e65/json HTTP/1.1" 200 None
-2023-11-10 15:14:09,977 http://localhost:None "POST /v1.43/containers/218609bda952e140567f0586e4387060f1868c103e40678be7ca542719fc8e65/start HTTP/1.1" 204 0
-2023-11-10 15:14:09,979 Primary end server containers started.
-2023-11-10 15:14:09,979 check8
-2023-11-10 15:14:09,983 check4
-2023-11-10 15:14:09,991 check5
-2023-11-10 15:14:09,992 Server started listening on port 50050...
-2023-11-10 15:14:10,861 Received function call for function: 0
-2023-11-10 15:14:11,962 Received function call for function: 0
-2023-11-10 15:14:15,963 Echoed value: 67.0
-2023-11-10 15:14:15,978 check10
-2023-11-10 15:14:17,036 Echoed value: 76.0
-2023-11-10 15:14:17,036 check10
+2023-11-10 23:44:35,625 check1
+2023-11-10 23:44:35,625 Initialising the connector server...
+2023-11-10 23:44:35,629 Added multithreading to the connector server...
+2023-11-10 23:44:35,629 Initialised the connector server object...
+2023-11-10 23:44:35,631 Server started listening on port 40040...
+2023-11-10 23:44:40,630 Initialising the connector server...
+2023-11-10 23:44:40,630 Added multithreading to the connector server...
+2023-11-10 23:44:40,630 Initialised the connector server object...
+2023-11-10 23:44:40,631 Server started listening on port 50050...
