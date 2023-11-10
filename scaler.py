@@ -6,6 +6,7 @@ import trial_1_pb2_grpc
 import trial_2_pb2
 import trial_2_pb2_grpc
 import docker
+from random import randint
 from time import sleep
 
 class Server(trial_1_pb2_grpc.AlertServicer):
@@ -13,6 +14,8 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         self.IP_addr_end = "localhost"
         self.containers_and_load = {}
         self.first_run = True
+        self.load_balancing_type = 4
+        self.round_robin_index = 0
         self.start_end_server_container()
     
     def first_free_container_port(self):
@@ -63,7 +66,6 @@ class Server(trial_1_pb2_grpc.AlertServicer):
                 logger.debug("Echoed value: " + str(response.val))
             
             elif request.function == 1:
-                
                 response = stub.RelayClientMessage(trial_2_pb2.function_message(data1=request.data1, data2 = request.data2,function=request.function))
                 logger.debug("Calculated simple interest value: " + str(response.val))
 
@@ -89,10 +91,39 @@ class Server(trial_1_pb2_grpc.AlertServicer):
     def InvokeMethod(self, request, context):
         # Perform load balancing here across the end server containers that are running to determine which end server to issue the job to
         
-        # Find key with minimum value from dictionary
-        selected_port = min(self.containers_and_load, key=self.containers_and_load.get)
-        print("Issuing job to end server container: " + selected_port)
+        if self.load_balancing_type == 0:
+            # Least connections load balancing
+            selected_port = min(self.containers_and_load, key=self.containers_and_load.get)
         
+        elif self.load_balancing_type == 1:
+            # Random choice
+            n = randint(0, len(self.containers_and_load)-1)
+            selected_port = list(self.containers_and_load.keys())[n]
+            
+        elif self.load_balancing_type == 2:
+            # Power of two choices
+            n1 = randint(0, len(self.containers_and_load)-1)
+            n2 = randint(0, len(self.containers_and_load)-1)
+            while n2 == n1:
+                n2 = randint(0, len(self.containers_and_load)-1)
+            n1 = list(self.containers_and_load.keys())[n1]
+            n2 = list(self.containers_and_load.keys())[n2]
+            if self.containers_and_load[n1] <= self.containers_and_load[n2]:
+                selected_port = n1
+            else:
+                selected_port = n2
+                
+        elif self.load_balancing_type == 3:
+            # Round robin
+            selected_port = list(self.containers_and_load.keys())[self.round_robin_index % len(self.containers_and_load)]
+            self.round_robin_index += 1
+        
+        elif self.load_balancing_type == 4:
+            # IP hash
+            # selected_port = list(self.containers_and_load.keys())[hash(source IP address goes here) % len(self.containers_and_load)]
+            selected_port = list(self.containers_and_load.keys())[0]        # temporary
+            
+        print("Issuing job to end server container: " + selected_port)
         self.containers_and_load[selected_port] += 1
         return_val = self.issueJob(request, selected_port, context)
         self.containers_and_load[selected_port] -= 1
