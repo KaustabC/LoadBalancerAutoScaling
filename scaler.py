@@ -22,6 +22,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         self.services = services
         self.base = base
         self.start_end_server_container()
+        self.count = 1
 
     def first_free_container_port(self):
         for i in range(self.base, self.base + 10):
@@ -176,18 +177,33 @@ class Server(trial_1_pb2_grpc.AlertServicer):
 
         elif self.load_balancing_type == 3:
             # Round robin
+            if self.count == 0:
+                if self.round_robin_index % 2 == 0:
+                    self.count = 2
+                else:
+                    self.count = 1
+
+                self.round_robin_index = (self.round_robin_index + 1) % len(
+                    self.containers_and_load
+                )
             selected_port = list(self.containers_and_load.keys())[
                 self.round_robin_index
             ]
-            self.round_robin_index = (self.round_robin_index + 1) % len(
-                self.containers_and_load
-            )
+
+            self.count -= 1
 
         elif self.load_balancing_type == 4:
             # IP hash
-            # selected_port = list(self.containers_and_load.keys())[hash(source IP address goes here) % len(self.containers_and_load)]
-            # USE request.ip for hashing
-            selected_port = list(self.containers_and_load.keys())[0]  # temporary
+            octets = request.ip.split(".")
+            hash_val = 0
+            x = 1
+            for i in octets:
+                hash_val += int(i, 2) * x
+                x *= 256
+            selected_port = list(self.containers_and_load.keys())[
+                hash_val % len(self.containers_and_load)
+            ]
+            # selected_port = list(self.containers_and_load.keys())[0]  # temporary
 
         print("Issuing job to end server container: " + selected_port)
         logger.debug("Issuing job to end server container: " + selected_port)
@@ -212,7 +228,7 @@ class Initialiser(trial_1_pb2_grpc.AlertServicer):
     def CreateInstance(self, request, context):
         if self.intermediateCount == 9:
             return trial_1_pb2.initMessage(port="-1")
-        
+
         port = self.basePort + str(self.intermediateCount)
 
         threading.Thread(
@@ -227,7 +243,7 @@ class Initialiser(trial_1_pb2_grpc.AlertServicer):
 
         self.intermediateCount += 1
 
-        return trial_1_pb2.initReply(port = port, services = request.services)
+        return trial_1_pb2.initReply(port=port, services=request.services)
 
     def InitialiseServer(self, port, loadType, autoScaleType, serviceStr):
         services = [False, False, False, False, False, False]
