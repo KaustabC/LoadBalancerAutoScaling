@@ -11,45 +11,46 @@ from heapq import heapify, heappush, heappop
 class Server(trial_1_pb2_grpc.AlertServicer):
     def __init__(self):
         self.port_end = "70070"
-        self.IP_addr_end = "localhost"
+        self.ip_end = "localhost"
         self.heap = []
         heapify(self.heap)
 
     def InvokeMethod(self, request, context):
         # make grpc call based on function to localhost:port_end (later can be changed to actual IP address):
         logger.debug("Received function call for function: " + str(request.function))
+
         if request.function == 0:
-            with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
+            with grpc.insecure_channel(self.ip_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
                 response = stub.RelayClientMessage(trial_2_pb2.FunctionMessage(data1=request.data1, function=request.function))
                 logger.debug("Echoed value: " + str(response.val))
         
         elif request.function == 1:
-            with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
+            with grpc.insecure_channel(self.ip_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
                 response = stub.RelayClientMessage(trial_2_pb2.FunctionMessage(data1=request.data1, data2 = request.data2,function=request.function))
                 logger.debug("Calculated simple interest value: " + str(response.val))
 
         elif request.function == 2:
-            with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
+            with grpc.insecure_channel(self.ip_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
                 response = stub.RelayClientMessage(trial_2_pb2.FunctionMessage(data1=request.data1,function=request.function))
                 logger.debug("Computed tax value: " + str(response.val))
                 
         elif request.function == 3:
-            with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
+            with grpc.insecure_channel(self.ip_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
                 response = stub.RelayClientMessage(trial_2_pb2.FunctionMessage(data1=request.data1,data2=request.data2,function=request.function))
                 logger.debug("Computed emi value: " + str(response.val))
                 
         elif request.function == 4:
-            with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
+            with grpc.insecure_channel(self.ip_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
                 response = stub.RelayClientMessage(trial_2_pb2.FunctionMessage(data1=request.data1,data2=request.data2,function=request.function))
                 logger.debug("Estimated returns on FD: " + str(response.val))
                 
         elif request.function == 5:
-            with grpc.insecure_channel(self.IP_addr_end + ":" + self.port_end) as channel:
+            with grpc.insecure_channel(self.ip_end + ":" + self.port_end) as channel:
                 stub = trial_2_pb2_grpc.AlertStub(channel)
                 response = stub.RelayClientMessage(trial_2_pb2.FunctionMessage(data1=request.data1,data2=request.data2,function=request.function))
                 logger.debug("Converted value in the target currency: " + str(response.val))
@@ -58,12 +59,22 @@ class Server(trial_1_pb2_grpc.AlertServicer):
 
         
     def RegisterMachine(self, request, context):
-        heappush(self.heap, (0, request.ip, request.port))
+        heappush(self.heap, (0, request.ip))
         heapify(self.heap)
         return trial_1_pb2.void()
     
     # Implement scale-up and scale-down RPC logic here
-    
+    def ScaleUp(self, ip, port, size):
+        with grpc.insecure_channel(ip + ":" + port) as channel:
+                stub = trial_1_pb2_grpc.AlertStub(channel)
+                response = stub.ChangeScale(trial_1_pb2.Scale(type=1))
+                logger.debug("Scaled-up container to size: " + str(size))
+
+    def ScaleDown(self, ip, port, size):
+        with grpc.insecure_channel(ip + ":" + port) as channel:
+                stub = trial_1_pb2_grpc.AlertStub(channel)
+                response = stub.ChangeScale(trial_1_pb2.Scale(type=0))
+                logger.debug("Scaled-up container to size: " + str(size))
 
 
 def serve():

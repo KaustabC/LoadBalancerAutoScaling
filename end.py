@@ -64,8 +64,25 @@ class Server(trial_2_pb2_grpc.AlertServicer):
             val = service.currencyConverter(amount = request.data1, currency = request.data2)
 
         return trial_2_pb2.ReturnValue(val = val)
-
     
+    def ChangeScale(self, request, context):
+        logger.debug("Received request from intermediate node")
+        logger.debug("Function type received: " + str(request.type))
+
+        if request.type == 1:
+            self.ScaleUp()
+        else:
+            self.ScaleDown()
+        
+        return trial_2_pb2.void()
+
+    def ScaleUp(self):
+        return 0
+    
+    def ScaleDown(self):
+        return 0
+    
+
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     trial_2_pb2_grpc.add_AlertServicer_to_server(Server(), server)

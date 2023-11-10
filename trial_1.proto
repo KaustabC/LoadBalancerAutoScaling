@@ -1,4 +1,4 @@
-// Proto file for connection between the client and intermediate balancer
+// Proto file for connection between the client and intermediate balancer, for registering end machines at the intermediate, for scaling up and down
 // python3 -m grpc_tools.protoc -I. --python_out=. --pyi_out=. --grpc_python_out=. trial_1.proto
 
 syntax = "proto3";
@@ -17,10 +17,16 @@ message ReturnValue
     optional float val = 1;
 }
 
-// Additional message type for end machines to register themselves at the intermediate
+// Message type for end machines to register themselves at the intermediate
 message MachineInfo
 {
     optional string ip = 1;
+}
+
+// Message type for scaling up or scaling down at each machine
+message Scale
+{
+    optional int32 type = 1;
 }
 
 // Void message for when nothing actually needs to be returned
@@ -30,4 +36,5 @@ service Alert
 {
     rpc InvokeMethod(FunctionMessage) returns (ReturnValue) {}
     rpc RegisterMachine(MachineInfo) returns (void) {}
+    rpc ChangeScale(Scale) returns (void) {}
 }
