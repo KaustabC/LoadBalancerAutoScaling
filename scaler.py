@@ -88,6 +88,53 @@ class Server(trial_1_pb2_grpc.AlertServicer):
 
         return trial_1_pb2.returnValue(val = response.val)
     
+    def removeContainer(containerPort):
+        logger.debug("removing container")
+        docker_client = docker.from_env()
+        container=docker_client.containers.get(containerPort);
+        container.remove(force=True)
+    
+    def removeAllContainers():
+        logger.debug("Setting up server...")
+        docker_client = docker.from_env()
+        containers=docker_client.containers.list()
+        for container in containers:
+            container.remove(force=True)
+
+    def get_cpu_usage(container_id):
+        client = docker.from_env()
+        container = client.containers.get(container_id)
+        stats = container.stats(stream=False)
+        return stats['cpu_stats']['cpu_usage']['total_usage'] / stats['cpu_stats']['system_cpu_usage']
+    
+    def LeAutoScaler(self,request,context):
+        if request.AutoScalingchoice == 1:
+            logger.debug("AutoScaling via threshold base analysis")
+            for key, value in self.containers_and_load.items():
+                containerId="endserverContainer"+key
+                cpu_usage=self.get_cpu_usage(containerId)
+                if cpu_usage>0.8 :
+                    logger.debug("Increasing instances")
+                    self.add_end_server_container()
+                elif cpu_usage == 0: 
+                    logger.debug("Decreasing instances")
+                    self.removeContainer(containerId)
+                    del self.containers_and_load[key]
+
+        elif request.AutoScalingchoice == 2:
+            logger.debug("AutoScaling via queueing theory")
+            for key, value in self.containers_and_load.items():
+                if value > 7:
+                    # Increase instances
+                    #DOUBT
+                    self.add_end_server_container()
+                elif value == 0:
+                    # Call the processing function for values equal to 0
+                    containerId="endserverContainer"+key
+                    self.removeContainer(containerId)
+                    # Remove the entry from the dictionary
+                    del self.containers_and_load[key]
+        
     def InvokeMethod(self, request, context):
         # Perform load balancing here across the end server containers that are running to determine which end server to issue the job to
         
