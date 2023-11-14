@@ -46,6 +46,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
     def start_end_server_container(self):
         logger.debug("Starting end server container...")
         # Docker client setup
+        self.removeAllContainers()
         docker_client = docker.from_env()
         logger.debug("Fetched docker env information...")
 
@@ -168,6 +169,8 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         return stats['cpu_stats']['cpu_usage']['total_usage'] / stats['cpu_stats']['system_cpu_usage']
     
     def LeAutoScaler(self,request,context):
+        if len(self.containers_and_load) == 0 :
+            return
         if request.AutoScalingchoice == 1:
             logger.debug("AutoScaling via threshold base analysis")
             for key, value in self.containers_and_load.items():
@@ -194,6 +197,14 @@ class Server(trial_1_pb2_grpc.AlertServicer):
                     self.removeContainer(containerId)
                     # Remove the entry from the dictionary
                     del self.containers_and_load[key]
+    def run_function_every_10_seconds(self,request,context):
+        while True:
+            self.LeAutoScaler()
+            sleep(10);
+
+    t1 = threading.Thread(target=run_function_every_10_seconds)
+
+    t1.start()
         
     def InvokeMethod(self, request, context):
         # Perform load balancing here across the end server containers that are running to determine which end server to issue the job to
