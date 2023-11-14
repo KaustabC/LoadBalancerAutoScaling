@@ -24,6 +24,7 @@ message initReply
 {
     optional int32 port = 1;
     optional string services = 2;
+    optional int32 count = 3;
 }
 
 message returnValue

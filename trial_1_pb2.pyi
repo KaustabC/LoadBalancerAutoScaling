@@ -27,12 +27,14 @@ class initMessage(_message.Message):
     def __init__(self, loadType: _Optional[int] = ..., autoType: _Optional[int] = ..., services: _Optional[str] = ...) -> None: ...
 
 class initReply(_message.Message):
-    __slots__ = ["port", "services"]
+    __slots__ = ["port", "services", "count"]
     PORT_FIELD_NUMBER: _ClassVar[int]
     SERVICES_FIELD_NUMBER: _ClassVar[int]
+    COUNT_FIELD_NUMBER: _ClassVar[int]
     port: int
     services: str
-    def __init__(self, port: _Optional[int] = ..., services: _Optional[str] = ...) -> None: ...
+    count: int
+    def __init__(self, port: _Optional[int] = ..., services: _Optional[str] = ..., count: _Optional[int] = ...) -> None: ...
 
 class returnValue(_message.Message):
     __slots__ = ["val"]

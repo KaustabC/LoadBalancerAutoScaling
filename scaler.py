@@ -59,9 +59,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         logger.debug("Extracted list of containers")
 
         if not containers:
-            logger.debug("1")
             free = self.first_free_container_port()
-            logger.debug("2")
             docker_client.containers.run(
                 "endserver",
                 name="endserverContainer" + free,
@@ -69,7 +67,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
                 network="cloudtemp",
                 ports={"50051/tcp": free},
             )
-            logger.debug("3")
+
             self.containers_and_load[free] = 0
             free = self.first_free_container_port()
             docker_client.containers.run(
@@ -79,12 +77,11 @@ class Server(trial_1_pb2_grpc.AlertServicer):
                 network="cloudtemp",
                 ports={"50051/tcp": free},
             )
-            logger.debug("4")
+
             self.containers_and_load[free] = 0
             print("Primary end server containers started.")
             logger.debug("Primary end server containers started.")
         else:
-            logger.debug("5")
             print(
                 "Primary end server containers are already running. System must be restarted."
             )
@@ -309,7 +306,7 @@ class Initialiser(trial_1_pb2_grpc.AlertServicer):
 
         self.intermediateCount += 1
 
-        return trial_1_pb2.initReply(port=int(port), services=request.services)
+        return trial_1_pb2.initReply(port=int(port), services=request.services, count=self.intermediateCount)
 
     def InitialiseServer(self, port, loadType, autoScaleType, serviceStr):
         services = [False, False, False, False, False, False]

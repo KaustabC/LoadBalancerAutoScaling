@@ -26,7 +26,7 @@ def run():
     print("5. Currency conversion")
 
     services = input(
-        "Enter a combination for services: \n Example: To choose services 1, 3, and 4, enter 134\n"
+        "Enter a combination for services: \n Example: To choose services 1, 3, and 4, enter 134\nChoice: "
     )
     logger.debug("Tenant is requesting services: " + services)
 
@@ -35,13 +35,17 @@ def run():
         "1. Least connections \n 2. Random choice \n 3. Power of two choices \n 4. Round robin \n 5. IP hash"
     )
     loadBalancerType = int(
-        input("Enter load balancing type: \n Example: To choose type 1, enter 1\n")
+        input(
+            "Enter load balancing type: \n Example: To choose type 1, enter 1\nChoice: "
+        )
     )
 
     print("Select from the following types of auto-scalers: ")
     print("1. Threshold based \n 2. Queue based")
     autoScalerType = int(
-        input("Enter load balancing type: \n Example: To choose type 1, enter 1\n")
+        input(
+            "Enter load balancing type: \n Example: To choose type 1, enter 1\nChoice: "
+        )
     )
 
     logger.debug(
@@ -75,9 +79,9 @@ def run():
             return
 
         # Open file in read/write mode and add intermediate's port number as well as services in two separate lines
-        with open("service.txt", "a") as f:
+        with open("tenant" + str(response.count) +".txt", "w") as f:
             f.write(str(response.port) + "\n")
-            f.write(response.services)
+            f.write(response.services + "\n")
         f.close()
 
 
