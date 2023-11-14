@@ -26,7 +26,7 @@ def run():
     print("5. Currency conversion")
 
     services = input(
-        "Enter a combination for services: \n Example: To choose services 1, 3, and 4, enter 134"
+        "Enter a combination for services: \n Example: To choose services 1, 3, and 4, enter 134\n"
     )
     logger.debug("Tenant is requesting services: " + services)
 
@@ -35,13 +35,13 @@ def run():
         "1. Least connections \n 2. Random choice \n 3. Power of two choices \n 4. Round robin \n 5. IP hash"
     )
     loadBalancerType = int(
-        input("Enter load balancing type: \n Example: To choose type 1, enter 1")
+        input("Enter load balancing type: \n Example: To choose type 1, enter 1\n")
     )
 
     print("Select from the following types of auto-scalers: ")
     print("1. Threshold based \n 2. Queue based")
     autoScalerType = int(
-        input("Enter load balancing type: \n Example: To choose type 1, enter 1")
+        input("Enter load balancing type: \n Example: To choose type 1, enter 1\n")
     )
 
     logger.debug(
@@ -56,7 +56,7 @@ def run():
         response = stub.CreateInstance(
             trial_1_pb2.initMessage(
                 loadType=loadBalancerType,
-                autoScaleType=autoScalerType,
+                autoType=autoScalerType,
                 services=services,
             )
         )
@@ -75,8 +75,8 @@ def run():
             return
 
         # Open file in read/write mode and add intermediate's port number as well as services in two separate lines
-        with open("service" +  +".txt", "w") as f:
-            f.write(response.port + "\n")
+        with open("service.txt", "a") as f:
+            f.write(str(response.port) + "\n")
             f.write(response.services)
         f.close()
 
