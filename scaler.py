@@ -15,6 +15,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
     def __init__(self, loadType, autoScaleType, services, base):
         self.IP_addr_end = "localhost"
         self.containers_and_load = {}
+        self.containers_and_load_lock=threading.Lock()
         self.first_run = True
         self.load_balancing_type = loadType
         self.auto_scaler_type = autoScaleType
@@ -24,6 +25,8 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         self.base = base
         self.start_end_server_container()
         self.count = 1
+        t1=threading.Thread(target=self.run_function_every_10_seconds)
+        t1.start()
 
     def first_free_container_port(self):
         for i in range(self.base, self.base + 10):
@@ -32,18 +35,61 @@ class Server(trial_1_pb2_grpc.AlertServicer):
 
     def add_end_server_container(self):
         docker_client = docker.from_env()
-        free = self.first_free_container_port(self)
+        free = self.first_free_container_port()
         docker_client.containers.run(
-            "endserver",
+            "endserversleep",
             name="endserverContainer" + free,
             detach=True,
             network="cloudtemp",
             ports={"50051/tcp": free},
         )
-        self.containers_and_load[free] = 0
+        with self.containers_and_load_lock:
+            self.containers_and_load[free] = 0
         sleep(1)
         return free
+    
+    def LeAutoScaler(self):
+        print("Auto scaler runs...")
+        print(self.containers_and_load.copy())
+        if len(self.containers_and_load) == 0 :
+            return
+        if self.auto_scaler_type == 1:
+            logger.debug("AutoScaling via threshold base analysis")
+            for key, value in self.containers_and_load.copy().items():
+                containerId = "endserverContainer" + key
+                cpu_usage = self.get_cpu_usage(containerId)
+                if cpu_usage > 0.8:
+                    logger.debug("Increasing instances")
+                    self.add_end_server_container()
+                elif cpu_usage == 0:
+                    if key == '50010' or key == '50011':
+                        continue
+                    logger.debug("Decreasing instances")
+                    self.removeContainer(containerId)
+                    with self.containers_and_load_lock:
+                        del self.containers_and_load[key]
 
+        elif self.auto_scaler_type == 2:
+            logger.debug("AutoScaling via queueing theory")
+            for key, value in self.containers_and_load.copy().items(): 
+                if value > 1:
+                    # Increase instances
+                    # DOUBT
+                    self.add_end_server_container()
+                elif value == 0:
+                    # Call the processing function for values equal to 0
+                    containerId = "endserverContainer" + key
+                    if key == '50010' or key == '50011':
+                        continue
+                    self.removeContainer(containerId)
+                    # Remove the entry from the dictionary
+                    with self.containers_and_load_lock:
+                        del self.containers_and_load[key]
+    def run_function_every_10_seconds(self):
+        while True:
+            self.LeAutoScaler()
+            sleep(10);
+    
     def start_end_server_container(self):
         logger.debug("Starting end server container...")
         # Docker client setup
@@ -61,24 +107,25 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         if not containers:
             free = self.first_free_container_port()
             docker_client.containers.run(
-                "endserver",
+                "endserversleep",
                 name="endserverContainer" + free,
                 detach=True,
                 network="cloudtemp",
                 ports={"50051/tcp": free},
             )
-
-            self.containers_and_load[free] = 0
+            with self.containers_and_load_lock:
+                self.containers_and_load[free] = 0
             free = self.first_free_container_port()
             docker_client.containers.run(
-                "endserver",
+                "endserversleep",
                 name="endserverContainer" + free,
                 detach=True,
                 network="cloudtemp",
                 ports={"50051/tcp": free},
             )
 
-            self.containers_and_load[free] = 0
+            with self.containers_and_load_lock:
+                self.containers_and_load[free] = 0
             print("Primary end server containers started.")
             logger.debug("Primary end server containers started.")
         else:
@@ -152,20 +199,20 @@ class Server(trial_1_pb2_grpc.AlertServicer):
 
         return trial_1_pb2.returnValue(val=response.val)
 
-    def removeContainer(containerPort):
+    def removeContainer(self,containerPort):
         logger.debug("removing container")
         docker_client = docker.from_env()
         container = docker_client.containers.get(containerPort)
         container.remove(force=True)
 
-    def removeAllContainers():
+    def removeAllContainers(self):
         logger.debug("Setting up server...")
         docker_client = docker.from_env()
         containers = docker_client.containers.list()
         for container in containers:
             container.remove(force=True)
 
-    def get_cpu_usage(container_id):
+    def get_cpu_usage(self,container_id):
         client = docker.from_env()
         container = client.containers.get(container_id)
         stats = container.stats(stream=False)
@@ -174,44 +221,6 @@ class Server(trial_1_pb2_grpc.AlertServicer):
             / stats["cpu_stats"]["system_cpu_usage"]
         )
 
-    def LeAutoScaler(self, request, context):
-        if len(self.containers_and_load) == 0 :
-            return
-        if self.auto_scaler_type == 1:
-            logger.debug("AutoScaling via threshold base analysis")
-            for key, value in self.containers_and_load.items():
-                containerId = "endserverContainer" + key
-                cpu_usage = self.get_cpu_usage(containerId)
-                if cpu_usage > 0.8:
-                    logger.debug("Increasing instances")
-                    self.add_end_server_container()
-                elif cpu_usage == 0:
-                    logger.debug("Decreasing instances")
-                    self.removeContainer(containerId)
-                    del self.containers_and_load[key]
-
-        elif self.auto_scaler_type == 2:
-            logger.debug("AutoScaling via queueing theory")
-            for key, value in self.containers_and_load.items():
-                if value > 7:
-                    # Increase instances
-                    # DOUBT
-                    self.add_end_server_container()
-                elif value == 0:
-                    # Call the processing function for values equal to 0
-                    containerId = "endserverContainer" + key
-                    self.removeContainer(containerId)
-                    # Remove the entry from the dictionary
-                    del self.containers_and_load[key]
-    def run_function_every_10_seconds(self,request,context):
-        while True:
-            self.LeAutoScaler()
-            sleep(10);
-
-    t1 = threading.Thread(target=run_function_every_10_seconds)
-
-    t1.start()
-        
     def InvokeMethod(self, request, context):
         # Perform load balancing here across the end server containers that are running to determine which end server to issue the job to
 
@@ -271,14 +280,16 @@ class Server(trial_1_pb2_grpc.AlertServicer):
 
         print("Issuing job to end server container: " + selected_port)
         logger.debug("Issuing job to end server container: " + selected_port)
-        self.containers_and_load[selected_port] += 1
+        with self.containers_and_load_lock:
+            self.containers_and_load[selected_port] += 1
         return_val = self.IssueJob(
             request.data1,
             request.data2,
             request.function,
             selected_port,
         )
-        self.containers_and_load[selected_port] -= 1
+        with self.containers_and_load_lock:
+            self.containers_and_load[selected_port] -= 1
 
         return return_val
 

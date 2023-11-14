@@ -34,7 +34,7 @@ class Server(trial_2_pb2_grpc.AlertServicer):
             val = service.FDReturnsCalculator(investment_rs = request.data1, rate_pa = self.FD_rate, tenure_yrs = request.data2)
         elif request.function == 5:
             val = service.currencyConverter(amount = request.data1, currency = request.data2)
-        sleep(5)
+        sleep(60)
         return trial_2_pb2.returnValue(val = val)
     
 def serve():
