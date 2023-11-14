@@ -14,7 +14,7 @@ logger.setLevel(logging.DEBUG)
 
 # IP_addr_intermediate = "172.17.63.199"
 IP_addr_intermediate = "localhost"
-port_intermediate = "50050"
+port_intermediate = "60000"
 
 
 def get_self_ip():

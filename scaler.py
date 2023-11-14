@@ -20,6 +20,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         self.auto_scaler_type = autoScaleType
         self.round_robin_index = 0
         self.services = services
+        print("Services: " + str(self.services))
         self.base = base
         self.start_end_server_container()
         self.count = 1
@@ -58,27 +59,32 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         logger.debug("Extracted list of containers")
 
         if not containers:
+            logger.debug("1")
             free = self.first_free_container_port()
+            logger.debug("2")
             docker_client.containers.run(
-                "endserversleep",
+                "endserver",
                 name="endserverContainer" + free,
                 detach=True,
                 network="cloudtemp",
                 ports={"50051/tcp": free},
             )
+            logger.debug("3")
             self.containers_and_load[free] = 0
             free = self.first_free_container_port()
             docker_client.containers.run(
-                "endserversleep",
+                "endserver",
                 name="endserverContainer" + free,
                 detach=True,
                 network="cloudtemp",
                 ports={"50051/tcp": free},
             )
+            logger.debug("4")
             self.containers_and_load[free] = 0
             print("Primary end server containers started.")
             logger.debug("Primary end server containers started.")
         else:
+            logger.debug("5")
             print(
                 "Primary end server containers are already running. System must be restarted."
             )
@@ -88,18 +94,18 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         logger.debug("Reached end of start_end_server_container()")
         # self.IP_addr_end = "endserverContainer"  # Update the IP address to the container name
 
-    def IssueJob(self, data1, data2, function, services, port):
+    def IssueJob(self, data1, data2, function, port):
         # make grpc call based on function to localhost:port_end (later can be changed to actual IP address):
         logger.debug("Received function call for function: " + str(function))
         with grpc.insecure_channel(self.IP_addr_end + ":" + port) as channel:
             stub = trial_2_pb2_grpc.AlertStub(channel)
-            if services[0] and function == 0:
+            if self.services[0] and function == 0:
                 response = stub.RelayClientMessage(
                     trial_2_pb2.function_message(data1=data1, function=function)
                 )
                 logger.debug("Echoed value: " + str(response.val))
 
-            elif services[1] and function == 1:
+            elif self.services[1] and function == 1:
                 response = stub.RelayClientMessage(
                     trial_2_pb2.function_message(
                         data1=data1,
@@ -109,13 +115,13 @@ class Server(trial_1_pb2_grpc.AlertServicer):
                 )
                 logger.debug("Calculated simple interest value: " + str(response.val))
 
-            elif services[2] and function == 2:
+            elif self.services[2] and function == 2:
                 response = stub.RelayClientMessage(
                     trial_2_pb2.function_message(data1=data1, function=function)
                 )
                 logger.debug("Computed tax value: " + str(response.val))
 
-            elif services[3] and function == 3:
+            elif self.services[3] and function == 3:
                 response = stub.RelayClientMessage(
                     trial_2_pb2.function_message(
                         data1=data1,
@@ -125,7 +131,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
                 )
                 logger.debug("Computed emi value: " + str(response.val))
 
-            elif services[4] and function == 4:
+            elif self.services[4] and function == 4:
                 response = stub.RelayClientMessage(
                     trial_2_pb2.function_message(
                         data1=data1,
@@ -135,7 +141,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
                 )
                 logger.debug("Estimated returns on FD: " + str(response.val))
 
-            elif services[5] and function == 5:
+            elif self.services[5] and function == 5:
                 response = stub.RelayClientMessage(
                     trial_2_pb2.function_message(
                         data1=data1, data2=data2, function=function
@@ -147,18 +153,18 @@ class Server(trial_1_pb2_grpc.AlertServicer):
 
         logger.debug("Returning value to client...")
 
-        return trial_1_pb2.returnValue(val = response.val)
-    
+        return trial_1_pb2.returnValue(val=response.val)
+
     def removeContainer(containerPort):
         logger.debug("removing container")
         docker_client = docker.from_env()
-        container=docker_client.containers.get(containerPort);
+        container = docker_client.containers.get(containerPort)
         container.remove(force=True)
-    
+
     def removeAllContainers():
         logger.debug("Setting up server...")
         docker_client = docker.from_env()
-        containers=docker_client.containers.list()
+        containers = docker_client.containers.list()
         for container in containers:
             container.remove(force=True)
 
@@ -166,34 +172,37 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         client = docker.from_env()
         container = client.containers.get(container_id)
         stats = container.stats(stream=False)
-        return stats['cpu_stats']['cpu_usage']['total_usage'] / stats['cpu_stats']['system_cpu_usage']
-    
-    def LeAutoScaler(self,request,context):
+        return (
+            stats["cpu_stats"]["cpu_usage"]["total_usage"]
+            / stats["cpu_stats"]["system_cpu_usage"]
+        )
+
+    def LeAutoScaler(self, request, context):
         if len(self.containers_and_load) == 0 :
             return
-        if request.AutoScalingchoice == 1:
+        if self.auto_scaler_type == 1:
             logger.debug("AutoScaling via threshold base analysis")
             for key, value in self.containers_and_load.items():
-                containerId="endserverContainer"+key
-                cpu_usage=self.get_cpu_usage(containerId)
-                if cpu_usage>0.8 :
+                containerId = "endserverContainer" + key
+                cpu_usage = self.get_cpu_usage(containerId)
+                if cpu_usage > 0.8:
                     logger.debug("Increasing instances")
                     self.add_end_server_container()
-                elif cpu_usage == 0: 
+                elif cpu_usage == 0:
                     logger.debug("Decreasing instances")
                     self.removeContainer(containerId)
                     del self.containers_and_load[key]
 
-        elif request.AutoScalingchoice == 2:
+        elif self.auto_scaler_type == 2:
             logger.debug("AutoScaling via queueing theory")
             for key, value in self.containers_and_load.items():
                 if value > 7:
                     # Increase instances
-                    #DOUBT
+                    # DOUBT
                     self.add_end_server_container()
                 elif value == 0:
                     # Call the processing function for values equal to 0
-                    containerId="endserverContainer"+key
+                    containerId = "endserverContainer" + key
                     self.removeContainer(containerId)
                     # Remove the entry from the dictionary
                     del self.containers_and_load[key]
@@ -270,7 +279,6 @@ class Server(trial_1_pb2_grpc.AlertServicer):
             request.data1,
             request.data2,
             request.function,
-            request.services,
             selected_port,
         )
         self.containers_and_load[selected_port] -= 1
@@ -294,14 +302,14 @@ class Initialiser(trial_1_pb2_grpc.AlertServicer):
             args=(
                 port,
                 request.loadType,
-                request.autoScaleType,
+                request.autoType,
                 request.services,
             ),
         ).start()
 
         self.intermediateCount += 1
 
-        return trial_1_pb2.initReply(port=port, services=request.services)
+        return trial_1_pb2.initReply(port=int(port), services=request.services)
 
     def InitialiseServer(self, port, loadType, autoScaleType, serviceStr):
         services = [False, False, False, False, False, False]
