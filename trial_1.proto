@@ -32,6 +32,12 @@ message returnValue
     optional float val = 1;
 }
 
+message cred
+{
+    optional string email = 1;
+    optional string password = 2;
+}
+
 // Void message for when nothing actually needs to be returned
 message void {}
 
@@ -39,4 +45,6 @@ service Alert
 {
     rpc InvokeMethod(function_message) returns (returnValue) {}
     rpc CreateInstance(initMessage) returns (initReply) {}
+    rpc CreateAccount(cred) returns (void) {}
+    rpc Login(cred) returns (returnValue) {}
 }

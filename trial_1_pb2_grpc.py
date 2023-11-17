@@ -24,6 +24,16 @@ class AlertStub(object):
                 request_serializer=trial__1__pb2.initMessage.SerializeToString,
                 response_deserializer=trial__1__pb2.initReply.FromString,
                 )
+        self.CreateAccount = channel.unary_unary(
+                '/trial_1.Alert/CreateAccount',
+                request_serializer=trial__1__pb2.cred.SerializeToString,
+                response_deserializer=trial__1__pb2.void.FromString,
+                )
+        self.Login = channel.unary_unary(
+                '/trial_1.Alert/Login',
+                request_serializer=trial__1__pb2.cred.SerializeToString,
+                response_deserializer=trial__1__pb2.returnValue.FromString,
+                )
 
 
 class AlertServicer(object):
@@ -41,6 +51,18 @@ class AlertServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def CreateAccount(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Login(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_AlertServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -53,6 +75,16 @@ def add_AlertServicer_to_server(servicer, server):
                     servicer.CreateInstance,
                     request_deserializer=trial__1__pb2.initMessage.FromString,
                     response_serializer=trial__1__pb2.initReply.SerializeToString,
+            ),
+            'CreateAccount': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateAccount,
+                    request_deserializer=trial__1__pb2.cred.FromString,
+                    response_serializer=trial__1__pb2.void.SerializeToString,
+            ),
+            'Login': grpc.unary_unary_rpc_method_handler(
+                    servicer.Login,
+                    request_deserializer=trial__1__pb2.cred.FromString,
+                    response_serializer=trial__1__pb2.returnValue.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -95,5 +127,39 @@ class Alert(object):
         return grpc.experimental.unary_unary(request, target, '/trial_1.Alert/CreateInstance',
             trial__1__pb2.initMessage.SerializeToString,
             trial__1__pb2.initReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CreateAccount(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/trial_1.Alert/CreateAccount',
+            trial__1__pb2.cred.SerializeToString,
+            trial__1__pb2.void.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Login(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/trial_1.Alert/Login',
+            trial__1__pb2.cred.SerializeToString,
+            trial__1__pb2.returnValue.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

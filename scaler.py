@@ -9,6 +9,7 @@ import docker
 from random import randint
 from time import sleep
 import threading
+import csv
 
 
 class Server(trial_1_pb2_grpc.AlertServicer):
@@ -293,12 +294,30 @@ class Server(trial_1_pb2_grpc.AlertServicer):
 
         return return_val
 
-
 class Initialiser(trial_1_pb2_grpc.AlertServicer):
     def __init__(self):
         self.intermediateCount = 0
         self.basePort = "6000"
+        f = open("credentials.csv", "a")
+        f.close()
 
+    def CreateAccount(self, request, context):
+        with open("credentials.csv", "a", newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([request.email, request.password])
+            return trial_1_pb2.void()
+
+    def Login(self, request, context):
+        with open("credentials.csv", "r") as file:
+            csv_reader = csv.reader(file)
+            for cred in csv_reader:
+                if cred[0] == request.email:
+                    if cred[1] == request.password:
+                        return trial_1_pb2.returnValue(val = 0)
+                    else:
+                        return trial_1_pb2.returnValue(val = 1)
+            return trial_1_pb2.returnValue(val = 2)
+        
     def CreateInstance(self, request, context):
         if self.intermediateCount == 9:
             return trial_1_pb2.initMessage(port="-1")

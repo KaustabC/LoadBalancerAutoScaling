@@ -42,6 +42,14 @@ class returnValue(_message.Message):
     val: float
     def __init__(self, val: _Optional[float] = ...) -> None: ...
 
+class cred(_message.Message):
+    __slots__ = ["email", "password"]
+    EMAIL_FIELD_NUMBER: _ClassVar[int]
+    PASSWORD_FIELD_NUMBER: _ClassVar[int]
+    email: str
+    password: str
+    def __init__(self, email: _Optional[str] = ..., password: _Optional[str] = ...) -> None: ...
+
 class void(_message.Message):
     __slots__ = []
     def __init__(self) -> None: ...
