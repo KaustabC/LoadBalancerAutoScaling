@@ -1,0 +1,50 @@
+// Proto file for connection between the client and intermediate balancer, as well as between portal and initialiser of scaler
+// python3 -m grpc_tools.protoc -I. --python_out=. --pyi_out=. --grpc_python_out=. trial_1.proto
+
+syntax = "proto3";
+package trial_1;
+
+// To store the message from the client
+message function_message
+{
+    optional int32 data1 = 1;
+    optional int32 data2 = 2;
+    optional int32 function = 3;
+    optional string ip = 4;
+}
+
+message initMessage
+{
+    optional int32 loadType = 1;
+    optional int32 autoType = 2;
+    optional string services = 3;
+}
+
+message initReply
+{
+    optional int32 port = 1;
+    optional string services = 2;
+    optional int32 count = 3;
+}
+
+message returnValue
+{
+    optional float val = 1;
+}
+
+message cred
+{
+    optional string email = 1;
+    optional string password = 2;
+}
+
+// Void message for when nothing actually needs to be returned
+message void {}
+
+service Alert
+{
+    rpc InvokeMethod(function_message) returns (returnValue) {}
+    rpc CreateInstance(initMessage) returns (initReply) {}
+    rpc CreateAccount(cred) returns (void) {}
+    rpc Login(cred) returns (returnValue) {}
+}
