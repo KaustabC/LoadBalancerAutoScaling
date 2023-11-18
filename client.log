@@ -1,2 +1,6 @@
-2023-11-18 01:27:15,416 Tenant has selected option: 2
-2023-11-18 01:27:18,889 Tenant has registered with email: 234
+2023-11-18 16:32:16,009 Tenant has selected option: 2
+2023-11-18 16:32:26,060 Tenant has registered with email: as@g.com
+2023-11-18 16:32:29,187 Tenant is requesting services: 0123
+2023-11-18 16:32:33,311 Tenant is requesting load balancer type: 2 and auto scaler type: 2
+2023-11-18 16:32:33,318 Initialised intermediate's port number: 60001
+2023-11-18 16:32:33,318 Initialised services: 0123

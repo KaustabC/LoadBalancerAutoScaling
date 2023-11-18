@@ -1,5 +1,72 @@
-2023-11-18 01:26:31,268 Before intialise() call
-2023-11-18 01:26:31,268 Initialising the initialiser server...
-2023-11-18 01:26:31,304 Added multithreading to the initialiser server...
-2023-11-18 01:26:31,304 Initialised the initialiser server object...
-2023-11-18 01:26:31,304 Server started listening on port 40040...
+2023-11-18 16:31:30,279 Before intialise() call
+2023-11-18 16:31:30,280 Initialising the initialiser server...
+2023-11-18 16:31:30,295 Added multithreading to the initialiser server...
+2023-11-18 16:31:30,300 Initialised the initialiser server object...
+2023-11-18 16:31:30,304 Server started listening on port 40040...
+2023-11-18 16:31:46,040 Initialising the connector server...
+2023-11-18 16:31:46,041 Added multithreading to the connector server...
+2023-11-18 16:31:46,041 Starting end server container...
+2023-11-18 16:31:46,042 Setting up server...
+2023-11-18 16:31:46,043 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-18 16:31:46,043 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-18 16:31:46,044 Found 'credsStore' section
+2023-11-18 16:31:46,090 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-18 16:31:46,108 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=0&size=0&trunc_cmd=0 HTTP/1.1" 200 None
+2023-11-18 16:31:46,129 http://localhost:None "GET /v1.43/containers/5becaab8b3436faf691e9efaf3256f9b9d57d41c461bf9ecd92802d91830f076/json HTTP/1.1" 200 None
+2023-11-18 16:31:46,148 http://localhost:None "GET /v1.43/containers/eb9c740b4b262e0c9585d6adcaf84b0f3c52f7db63994ef924e076c1321b2ddb/json HTTP/1.1" 200 None
+2023-11-18 16:31:46,769 http://localhost:None "DELETE /v1.43/containers/5becaab8b3436faf691e9efaf3256f9b9d57d41c461bf9ecd92802d91830f076?v=False&link=False&force=True HTTP/1.1" 204 0
+2023-11-18 16:31:47,461 http://localhost:None "DELETE /v1.43/containers/eb9c740b4b262e0c9585d6adcaf84b0f3c52f7db63994ef924e076c1321b2ddb?v=False&link=False&force=True HTTP/1.1" 204 0
+2023-11-18 16:31:47,463 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-18 16:31:47,464 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-18 16:31:47,466 Found 'credsStore' section
+2023-11-18 16:31:47,492 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-18 16:31:47,493 Fetched docker env information...
+2023-11-18 16:31:47,504 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
+2023-11-18 16:31:47,507 Extracted list of containers
+2023-11-18 16:31:47,620 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50010 HTTP/1.1" 201 None
+2023-11-18 16:31:47,630 http://localhost:None "GET /v1.43/containers/f2df23e014642927d6be438ef7fb11b960a2bedffd25b566d842be631d8dae75/json HTTP/1.1" 200 None
+2023-11-18 16:31:48,387 http://localhost:None "POST /v1.43/containers/f2df23e014642927d6be438ef7fb11b960a2bedffd25b566d842be631d8dae75/start HTTP/1.1" 204 0
+2023-11-18 16:31:48,564 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50011 HTTP/1.1" 201 None
+2023-11-18 16:31:48,576 http://localhost:None "GET /v1.43/containers/6c931a63040bcd8f82042628dc24832214c692bc2ca577e5cc9c26f38a83de04/json HTTP/1.1" 200 None
+2023-11-18 16:31:49,147 http://localhost:None "POST /v1.43/containers/6c931a63040bcd8f82042628dc24832214c692bc2ca577e5cc9c26f38a83de04/start HTTP/1.1" 204 0
+2023-11-18 16:31:49,149 Primary end server containers started.
+2023-11-18 16:31:49,150 Reached end of start_end_server_container()
+2023-11-18 16:31:49,152 AutoScaling via queueing theory
+2023-11-18 16:31:49,153 Initialised the connector server object...
+2023-11-18 16:31:49,166 Server started listening on port 60000...
+2023-11-18 16:31:59,166 AutoScaling via queueing theory
+2023-11-18 16:32:09,181 AutoScaling via queueing theory
+2023-11-18 16:32:19,193 AutoScaling via queueing theory
+2023-11-18 16:32:29,198 AutoScaling via queueing theory
+2023-11-18 16:32:33,317 Initialising the connector server...
+2023-11-18 16:32:33,317 Added multithreading to the connector server...
+2023-11-18 16:32:33,318 Starting end server container...
+2023-11-18 16:32:33,318 Setting up server...
+2023-11-18 16:32:33,319 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-18 16:32:33,320 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-18 16:32:33,320 Found 'credsStore' section
+2023-11-18 16:32:33,363 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-18 16:32:33,497 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=0&size=0&trunc_cmd=0 HTTP/1.1" 200 None
+2023-11-18 16:32:33,514 http://localhost:None "GET /v1.43/containers/6c931a63040bcd8f82042628dc24832214c692bc2ca577e5cc9c26f38a83de04/json HTTP/1.1" 200 None
+2023-11-18 16:32:33,531 http://localhost:None "GET /v1.43/containers/f2df23e014642927d6be438ef7fb11b960a2bedffd25b566d842be631d8dae75/json HTTP/1.1" 200 None
+2023-11-18 16:32:34,174 http://localhost:None "DELETE /v1.43/containers/6c931a63040bcd8f82042628dc24832214c692bc2ca577e5cc9c26f38a83de04?v=False&link=False&force=True HTTP/1.1" 204 0
+2023-11-18 16:32:34,707 http://localhost:None "DELETE /v1.43/containers/f2df23e014642927d6be438ef7fb11b960a2bedffd25b566d842be631d8dae75?v=False&link=False&force=True HTTP/1.1" 204 0
+2023-11-18 16:32:34,711 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-18 16:32:34,712 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-18 16:32:34,713 Found 'credsStore' section
+2023-11-18 16:32:34,750 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-18 16:32:34,751 Fetched docker env information...
+2023-11-18 16:32:34,765 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
+2023-11-18 16:32:34,767 Extracted list of containers
+2023-11-18 16:32:34,920 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50020 HTTP/1.1" 201 None
+2023-11-18 16:32:34,936 http://localhost:None "GET /v1.43/containers/7e0513405f06bf9521ccd009f3b65783fdd095ce052ac8e2f203d67cb1d33144/json HTTP/1.1" 200 None
+2023-11-18 16:32:35,656 http://localhost:None "POST /v1.43/containers/7e0513405f06bf9521ccd009f3b65783fdd095ce052ac8e2f203d67cb1d33144/start HTTP/1.1" 204 0
+2023-11-18 16:32:35,839 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50021 HTTP/1.1" 201 None
+2023-11-18 16:32:35,850 http://localhost:None "GET /v1.43/containers/971a58a48ee1d401b79a3aabf11799ab86db0ecef445053159c16746972241c5/json HTTP/1.1" 200 None
+2023-11-18 16:32:36,780 http://localhost:None "POST /v1.43/containers/971a58a48ee1d401b79a3aabf11799ab86db0ecef445053159c16746972241c5/start HTTP/1.1" 204 0
+2023-11-18 16:32:36,783 Primary end server containers started.
+2023-11-18 16:32:36,784 Reached end of start_end_server_container()
+2023-11-18 16:32:36,787 AutoScaling via queueing theory
+2023-11-18 16:32:36,787 Initialised the connector server object...
+2023-11-18 16:32:36,807 Server started listening on port 60001...
+2023-11-18 16:32:39,210 AutoScaling via queueing theory
