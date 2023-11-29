@@ -74,25 +74,25 @@ def run():
         print("5. Currency conversion")
 
         services = input(
-            "Enter a combination for services: \n Example: To choose services 1, 3, and 4, enter 134\nChoice: "
+            "Enter a combination for services: \nExample: To choose services 1, 3, and 4, enter 134\nChoice: "
         )
         logger.debug("Tenant is requesting services: " + services)
 
         print("Select from the following types of load balancers: ")
         print(
-            "1. Least connections \n 2. Random choice \n 3. Power of two choices \n 4. Round robin \n 5. IP hash"
+            "1. Least connections \n2. Random choice \n3. Power of two choices \n4. Round robin \n5. IP hash"
         )
         loadBalancerType = int(
             input(
-                "Enter load balancing type: \n Example: To choose type 1, enter 1\nChoice: "
+                "Enter load balancing type: \nExample: To choose type 1, enter 1\nChoice: "
             )
         )
 
         print("Select from the following types of auto-scalers: ")
-        print("1. Threshold based \n 2. Queue based")
+        print("1. Threshold based \n2. Queue based")
         autoScalerType = int(
             input(
-                "Enter load balancing type: \n Example: To choose type 1, enter 1\nChoice: "
+                "Enter auto scaler type: \nExample: To choose type 1, enter 1\nChoice: "
             )
         )
 

@@ -1,72 +1,165 @@
-2023-11-18 16:31:30,279 Before intialise() call
-2023-11-18 16:31:30,280 Initialising the initialiser server...
-2023-11-18 16:31:30,295 Added multithreading to the initialiser server...
-2023-11-18 16:31:30,300 Initialised the initialiser server object...
-2023-11-18 16:31:30,304 Server started listening on port 40040...
-2023-11-18 16:31:46,040 Initialising the connector server...
-2023-11-18 16:31:46,041 Added multithreading to the connector server...
-2023-11-18 16:31:46,041 Starting end server container...
-2023-11-18 16:31:46,042 Setting up server...
-2023-11-18 16:31:46,043 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-18 16:31:46,043 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-18 16:31:46,044 Found 'credsStore' section
-2023-11-18 16:31:46,090 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-18 16:31:46,108 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=0&size=0&trunc_cmd=0 HTTP/1.1" 200 None
-2023-11-18 16:31:46,129 http://localhost:None "GET /v1.43/containers/5becaab8b3436faf691e9efaf3256f9b9d57d41c461bf9ecd92802d91830f076/json HTTP/1.1" 200 None
-2023-11-18 16:31:46,148 http://localhost:None "GET /v1.43/containers/eb9c740b4b262e0c9585d6adcaf84b0f3c52f7db63994ef924e076c1321b2ddb/json HTTP/1.1" 200 None
-2023-11-18 16:31:46,769 http://localhost:None "DELETE /v1.43/containers/5becaab8b3436faf691e9efaf3256f9b9d57d41c461bf9ecd92802d91830f076?v=False&link=False&force=True HTTP/1.1" 204 0
-2023-11-18 16:31:47,461 http://localhost:None "DELETE /v1.43/containers/eb9c740b4b262e0c9585d6adcaf84b0f3c52f7db63994ef924e076c1321b2ddb?v=False&link=False&force=True HTTP/1.1" 204 0
-2023-11-18 16:31:47,463 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-18 16:31:47,464 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-18 16:31:47,466 Found 'credsStore' section
-2023-11-18 16:31:47,492 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-18 16:31:47,493 Fetched docker env information...
-2023-11-18 16:31:47,504 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
-2023-11-18 16:31:47,507 Extracted list of containers
-2023-11-18 16:31:47,620 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50010 HTTP/1.1" 201 None
-2023-11-18 16:31:47,630 http://localhost:None "GET /v1.43/containers/f2df23e014642927d6be438ef7fb11b960a2bedffd25b566d842be631d8dae75/json HTTP/1.1" 200 None
-2023-11-18 16:31:48,387 http://localhost:None "POST /v1.43/containers/f2df23e014642927d6be438ef7fb11b960a2bedffd25b566d842be631d8dae75/start HTTP/1.1" 204 0
-2023-11-18 16:31:48,564 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50011 HTTP/1.1" 201 None
-2023-11-18 16:31:48,576 http://localhost:None "GET /v1.43/containers/6c931a63040bcd8f82042628dc24832214c692bc2ca577e5cc9c26f38a83de04/json HTTP/1.1" 200 None
-2023-11-18 16:31:49,147 http://localhost:None "POST /v1.43/containers/6c931a63040bcd8f82042628dc24832214c692bc2ca577e5cc9c26f38a83de04/start HTTP/1.1" 204 0
-2023-11-18 16:31:49,149 Primary end server containers started.
-2023-11-18 16:31:49,150 Reached end of start_end_server_container()
-2023-11-18 16:31:49,152 AutoScaling via queueing theory
-2023-11-18 16:31:49,153 Initialised the connector server object...
-2023-11-18 16:31:49,166 Server started listening on port 60000...
-2023-11-18 16:31:59,166 AutoScaling via queueing theory
-2023-11-18 16:32:09,181 AutoScaling via queueing theory
-2023-11-18 16:32:19,193 AutoScaling via queueing theory
-2023-11-18 16:32:29,198 AutoScaling via queueing theory
-2023-11-18 16:32:33,317 Initialising the connector server...
-2023-11-18 16:32:33,317 Added multithreading to the connector server...
-2023-11-18 16:32:33,318 Starting end server container...
-2023-11-18 16:32:33,318 Setting up server...
-2023-11-18 16:32:33,319 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-18 16:32:33,320 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-18 16:32:33,320 Found 'credsStore' section
-2023-11-18 16:32:33,363 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-18 16:32:33,497 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=0&size=0&trunc_cmd=0 HTTP/1.1" 200 None
-2023-11-18 16:32:33,514 http://localhost:None "GET /v1.43/containers/6c931a63040bcd8f82042628dc24832214c692bc2ca577e5cc9c26f38a83de04/json HTTP/1.1" 200 None
-2023-11-18 16:32:33,531 http://localhost:None "GET /v1.43/containers/f2df23e014642927d6be438ef7fb11b960a2bedffd25b566d842be631d8dae75/json HTTP/1.1" 200 None
-2023-11-18 16:32:34,174 http://localhost:None "DELETE /v1.43/containers/6c931a63040bcd8f82042628dc24832214c692bc2ca577e5cc9c26f38a83de04?v=False&link=False&force=True HTTP/1.1" 204 0
-2023-11-18 16:32:34,707 http://localhost:None "DELETE /v1.43/containers/f2df23e014642927d6be438ef7fb11b960a2bedffd25b566d842be631d8dae75?v=False&link=False&force=True HTTP/1.1" 204 0
-2023-11-18 16:32:34,711 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-18 16:32:34,712 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-18 16:32:34,713 Found 'credsStore' section
-2023-11-18 16:32:34,750 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-18 16:32:34,751 Fetched docker env information...
-2023-11-18 16:32:34,765 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
-2023-11-18 16:32:34,767 Extracted list of containers
-2023-11-18 16:32:34,920 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50020 HTTP/1.1" 201 None
-2023-11-18 16:32:34,936 http://localhost:None "GET /v1.43/containers/7e0513405f06bf9521ccd009f3b65783fdd095ce052ac8e2f203d67cb1d33144/json HTTP/1.1" 200 None
-2023-11-18 16:32:35,656 http://localhost:None "POST /v1.43/containers/7e0513405f06bf9521ccd009f3b65783fdd095ce052ac8e2f203d67cb1d33144/start HTTP/1.1" 204 0
-2023-11-18 16:32:35,839 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50021 HTTP/1.1" 201 None
-2023-11-18 16:32:35,850 http://localhost:None "GET /v1.43/containers/971a58a48ee1d401b79a3aabf11799ab86db0ecef445053159c16746972241c5/json HTTP/1.1" 200 None
-2023-11-18 16:32:36,780 http://localhost:None "POST /v1.43/containers/971a58a48ee1d401b79a3aabf11799ab86db0ecef445053159c16746972241c5/start HTTP/1.1" 204 0
-2023-11-18 16:32:36,783 Primary end server containers started.
-2023-11-18 16:32:36,784 Reached end of start_end_server_container()
-2023-11-18 16:32:36,787 AutoScaling via queueing theory
-2023-11-18 16:32:36,787 Initialised the connector server object...
-2023-11-18 16:32:36,807 Server started listening on port 60001...
-2023-11-18 16:32:39,210 AutoScaling via queueing theory
+2023-11-29 16:46:50,081 Before intialise() call
+2023-11-29 16:46:50,082 Initialising the initialiser server...
+2023-11-29 16:46:50,095 Added multithreading to the initialiser server...
+2023-11-29 16:46:50,099 Initialised the initialiser server object...
+2023-11-29 16:46:50,114 Server started listening on port 40040...
+2023-11-29 16:46:57,892 Initialising the connector server...
+2023-11-29 16:46:57,892 Added multithreading to the connector server...
+2023-11-29 16:46:57,893 Starting end server container...
+2023-11-29 16:46:57,893 Setting up server...
+2023-11-29 16:46:57,894 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:46:57,895 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:46:57,896 Found 'credsStore' section
+2023-11-29 16:46:57,949 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:46:57,967 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=0&size=0&trunc_cmd=0 HTTP/1.1" 200 None
+2023-11-29 16:46:57,986 http://localhost:None "GET /v1.43/containers/bc9449098acc8d7a0df80047d6b4ed482ae01a4b5316480e28c0c29b5a4a3130/json HTTP/1.1" 200 None
+2023-11-29 16:46:58,002 http://localhost:None "GET /v1.43/containers/a4ae63a6328c70f8fbb9b7ec80fd9b58b1eaa45a4d30523a8aee75a11112b42b/json HTTP/1.1" 200 None
+2023-11-29 16:46:58,775 http://localhost:None "DELETE /v1.43/containers/bc9449098acc8d7a0df80047d6b4ed482ae01a4b5316480e28c0c29b5a4a3130?v=False&link=False&force=True HTTP/1.1" 204 0
+2023-11-29 16:46:59,460 http://localhost:None "DELETE /v1.43/containers/a4ae63a6328c70f8fbb9b7ec80fd9b58b1eaa45a4d30523a8aee75a11112b42b?v=False&link=False&force=True HTTP/1.1" 204 0
+2023-11-29 16:46:59,463 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:46:59,464 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:46:59,465 Found 'credsStore' section
+2023-11-29 16:46:59,503 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:46:59,505 Fetched docker env information...
+2023-11-29 16:46:59,518 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
+2023-11-29 16:46:59,520 Extracted list of containers
+2023-11-29 16:46:59,629 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50010 HTTP/1.1" 201 None
+2023-11-29 16:46:59,643 http://localhost:None "GET /v1.43/containers/8335f94e6e56b32b9824ed6e181f2ed3202cb8f88afcea87738883c893ae696c/json HTTP/1.1" 200 None
+2023-11-29 16:47:00,411 http://localhost:None "POST /v1.43/containers/8335f94e6e56b32b9824ed6e181f2ed3202cb8f88afcea87738883c893ae696c/start HTTP/1.1" 204 0
+2023-11-29 16:47:00,530 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50011 HTTP/1.1" 201 None
+2023-11-29 16:47:00,545 http://localhost:None "GET /v1.43/containers/2957991b10dba0276cc1214bd1ac508223d5d0fd27e1b538ab80a3efc92f7e33/json HTTP/1.1" 200 None
+2023-11-29 16:47:01,103 http://localhost:None "POST /v1.43/containers/2957991b10dba0276cc1214bd1ac508223d5d0fd27e1b538ab80a3efc92f7e33/start HTTP/1.1" 204 0
+2023-11-29 16:47:01,111 Primary end server containers started.
+2023-11-29 16:47:01,111 Reached end of start_end_server_container()
+2023-11-29 16:47:01,113 Initialised the connector server object...
+2023-11-29 16:47:01,115 AutoScaling via threshold base analysis
+2023-11-29 16:47:01,115 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:01,116 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:01,117 Found 'credsStore' section
+2023-11-29 16:47:01,130 Server started listening on port 60000...
+2023-11-29 16:47:01,156 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:01,170 http://localhost:None "GET /v1.43/containers/endserverContainer50010/json HTTP/1.1" 200 None
+2023-11-29 16:47:02,209 http://localhost:None "GET /v1.43/containers/8335f94e6e56b32b9824ed6e181f2ed3202cb8f88afcea87738883c893ae696c/stats?stream=False HTTP/1.1" 200 None
+2023-11-29 16:47:02,215 Increasing instances
+2023-11-29 16:47:02,218 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:02,218 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:02,219 Found 'credsStore' section
+2023-11-29 16:47:02,271 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:02,506 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50012 HTTP/1.1" 201 None
+2023-11-29 16:47:02,532 http://localhost:None "GET /v1.43/containers/364012d405c7109d3a98c988c36dc600dea73a667b4003b59e3562b8eaffa6e5/json HTTP/1.1" 200 None
+2023-11-29 16:47:03,134 http://localhost:None "POST /v1.43/containers/364012d405c7109d3a98c988c36dc600dea73a667b4003b59e3562b8eaffa6e5/start HTTP/1.1" 204 0
+2023-11-29 16:47:04,142 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:04,143 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:04,144 Found 'credsStore' section
+2023-11-29 16:47:04,176 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:04,192 http://localhost:None "GET /v1.43/containers/endserverContainer50011/json HTTP/1.1" 200 None
+2023-11-29 16:47:05,236 http://localhost:None "GET /v1.43/containers/2957991b10dba0276cc1214bd1ac508223d5d0fd27e1b538ab80a3efc92f7e33/stats?stream=False HTTP/1.1" 200 None
+2023-11-29 16:47:05,239 Increasing instances
+2023-11-29 16:47:05,240 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:05,240 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:05,241 Found 'credsStore' section
+2023-11-29 16:47:05,282 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:05,515 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50013 HTTP/1.1" 201 None
+2023-11-29 16:47:05,532 http://localhost:None "GET /v1.43/containers/c834ce1ed2fa549abbbe6a39c63816f2df8ef4e546bc57b9bbe39869a6d41c62/json HTTP/1.1" 200 None
+2023-11-29 16:47:06,258 http://localhost:None "POST /v1.43/containers/c834ce1ed2fa549abbbe6a39c63816f2df8ef4e546bc57b9bbe39869a6d41c62/start HTTP/1.1" 204 0
+2023-11-29 16:47:12,287 AutoScaling via threshold base analysis
+2023-11-29 16:47:12,288 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:12,288 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:12,289 Found 'credsStore' section
+2023-11-29 16:47:12,321 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:12,466 http://localhost:None "GET /v1.43/containers/endserverContainer50010/json HTTP/1.1" 200 None
+2023-11-29 16:47:14,041 http://localhost:None "GET /v1.43/containers/8335f94e6e56b32b9824ed6e181f2ed3202cb8f88afcea87738883c893ae696c/stats?stream=False HTTP/1.1" 200 None
+2023-11-29 16:47:14,059 Increasing instances
+2023-11-29 16:47:14,060 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:14,061 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:14,062 Found 'credsStore' section
+2023-11-29 16:47:14,110 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:14,344 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50014 HTTP/1.1" 201 None
+2023-11-29 16:47:14,369 http://localhost:None "GET /v1.43/containers/1dcf59df0d0796b5a197d3475423e26ea3a0f6f1447ee79207e1157c36175898/json HTTP/1.1" 200 None
+2023-11-29 16:47:15,087 http://localhost:None "POST /v1.43/containers/1dcf59df0d0796b5a197d3475423e26ea3a0f6f1447ee79207e1157c36175898/start HTTP/1.1" 204 0
+2023-11-29 16:47:16,103 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:16,103 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:16,103 Found 'credsStore' section
+2023-11-29 16:47:16,140 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:16,159 http://localhost:None "GET /v1.43/containers/endserverContainer50011/json HTTP/1.1" 200 None
+2023-11-29 16:47:17,195 http://localhost:None "GET /v1.43/containers/2957991b10dba0276cc1214bd1ac508223d5d0fd27e1b538ab80a3efc92f7e33/stats?stream=False HTTP/1.1" 200 None
+2023-11-29 16:47:17,198 Increasing instances
+2023-11-29 16:47:17,198 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:17,199 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:17,199 Found 'credsStore' section
+2023-11-29 16:47:17,245 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:17,483 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50015 HTTP/1.1" 201 None
+2023-11-29 16:47:17,500 http://localhost:None "GET /v1.43/containers/aba7aa464e99c4fca051596e0585dd0ca473b196d7f7e649b8d34ba5a2a0b12f/json HTTP/1.1" 200 None
+2023-11-29 16:47:18,419 http://localhost:None "POST /v1.43/containers/aba7aa464e99c4fca051596e0585dd0ca473b196d7f7e649b8d34ba5a2a0b12f/start HTTP/1.1" 204 0
+2023-11-29 16:47:19,424 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:19,499 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:19,500 Found 'credsStore' section
+2023-11-29 16:47:19,531 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:19,544 http://localhost:None "GET /v1.43/containers/endserverContainer50012/json HTTP/1.1" 200 None
+2023-11-29 16:47:20,577 http://localhost:None "GET /v1.43/containers/364012d405c7109d3a98c988c36dc600dea73a667b4003b59e3562b8eaffa6e5/stats?stream=False HTTP/1.1" 200 None
+2023-11-29 16:47:20,580 Increasing instances
+2023-11-29 16:47:20,581 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:20,581 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:20,582 Found 'credsStore' section
+2023-11-29 16:47:20,741 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:20,841 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50016 HTTP/1.1" 201 None
+2023-11-29 16:47:20,856 http://localhost:None "GET /v1.43/containers/12ce2d16bed348af59f95c30d4afbdc486466db33bbd0bbe181ddc55d1f0378d/json HTTP/1.1" 200 None
+2023-11-29 16:47:21,704 http://localhost:None "POST /v1.43/containers/12ce2d16bed348af59f95c30d4afbdc486466db33bbd0bbe181ddc55d1f0378d/start HTTP/1.1" 204 0
+2023-11-29 16:47:22,722 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:22,723 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:22,723 Found 'credsStore' section
+2023-11-29 16:47:22,748 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:22,760 http://localhost:None "GET /v1.43/containers/endserverContainer50013/json HTTP/1.1" 200 None
+2023-11-29 16:47:24,747 http://localhost:None "GET /v1.43/containers/c834ce1ed2fa549abbbe6a39c63816f2df8ef4e546bc57b9bbe39869a6d41c62/stats?stream=False HTTP/1.1" 200 None
+2023-11-29 16:47:24,749 Increasing instances
+2023-11-29 16:47:24,750 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:24,750 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:24,751 Found 'credsStore' section
+2023-11-29 16:47:24,779 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:25,016 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50017 HTTP/1.1" 201 None
+2023-11-29 16:47:25,032 http://localhost:None "GET /v1.43/containers/ed0653641487203a9eb753e39f9996e605b29fd9da1171de45d34fd881ea3e25/json HTTP/1.1" 200 None
+2023-11-29 16:47:25,871 http://localhost:None "POST /v1.43/containers/ed0653641487203a9eb753e39f9996e605b29fd9da1171de45d34fd881ea3e25/start HTTP/1.1" 204 0
+2023-11-29 16:47:31,543 Issuing job to end server container: 50010
+2023-11-29 16:47:31,543 Received function call for function: 0
+2023-11-29 16:47:31,892 AutoScaling via threshold base analysis
+2023-11-29 16:47:31,893 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:31,893 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:31,894 Found 'credsStore' section
+2023-11-29 16:47:31,985 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:32,001 http://localhost:None "GET /v1.43/containers/endserverContainer50010/json HTTP/1.1" 200 None
+2023-11-29 16:47:33,141 http://localhost:None "GET /v1.43/containers/8335f94e6e56b32b9824ed6e181f2ed3202cb8f88afcea87738883c893ae696c/stats?stream=False HTTP/1.1" 200 None
+2023-11-29 16:47:33,145 Increasing instances
+2023-11-29 16:47:33,146 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:33,147 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:33,149 Found 'credsStore' section
+2023-11-29 16:47:33,196 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:33,298 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50018 HTTP/1.1" 201 None
+2023-11-29 16:47:33,316 http://localhost:None "GET /v1.43/containers/0ef3053038bf286c0546b3743b4df4dae0a80dd841e3e9e0bce2860b29911e5a/json HTTP/1.1" 200 None
+2023-11-29 16:47:34,057 http://localhost:None "POST /v1.43/containers/0ef3053038bf286c0546b3743b4df4dae0a80dd841e3e9e0bce2860b29911e5a/start HTTP/1.1" 204 0
+2023-11-29 16:47:35,062 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:35,062 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:35,062 Found 'credsStore' section
+2023-11-29 16:47:35,249 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:35,265 http://localhost:None "GET /v1.43/containers/endserverContainer50011/json HTTP/1.1" 200 None
+2023-11-29 16:47:36,302 http://localhost:None "GET /v1.43/containers/2957991b10dba0276cc1214bd1ac508223d5d0fd27e1b538ab80a3efc92f7e33/stats?stream=False HTTP/1.1" 200 None
+2023-11-29 16:47:36,305 Increasing instances
+2023-11-29 16:47:36,306 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:36,307 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:36,308 Found 'credsStore' section
+2023-11-29 16:47:36,473 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:36,590 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50019 HTTP/1.1" 201 None
+2023-11-29 16:47:36,609 http://localhost:None "GET /v1.43/containers/cd193a87e826dd076e342f3efb772e064ca3a49dd32191d961960c4e66466ab9/json HTTP/1.1" 200 None
+2023-11-29 16:47:37,230 http://localhost:None "POST /v1.43/containers/cd193a87e826dd076e342f3efb772e064ca3a49dd32191d961960c4e66466ab9/start HTTP/1.1" 204 0
+2023-11-29 16:47:38,236 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:38,237 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:38,238 Found 'credsStore' section
+2023-11-29 16:47:38,447 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:47:38,464 http://localhost:None "GET /v1.43/containers/endserverContainer50012/json HTTP/1.1" 200 None
+2023-11-29 16:47:39,501 http://localhost:None "GET /v1.43/containers/364012d405c7109d3a98c988c36dc600dea73a667b4003b59e3562b8eaffa6e5/stats?stream=False HTTP/1.1" 200 None
+2023-11-29 16:47:39,505 Increasing instances
+2023-11-29 16:47:39,506 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-11-29 16:47:39,506 Found file at path: C:\Users\harsh\.docker\config.json
+2023-11-29 16:47:39,507 Found 'credsStore' section
+2023-11-29 16:47:39,553 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-11-29 16:48:31,716 Echoed value: 1.0
+2023-11-29 16:48:31,719 Returning value to client...

@@ -26,7 +26,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         self.base = base
         self.start_end_server_container()
         self.count = 1
-        t1=threading.Thread(target=self.run_function_every_10_seconds)
+        t1=threading.Thread(target=self.run_function_every_secs_seconds,args=(5,))
         t1.start()
 
     def first_free_container_port(self):
@@ -47,11 +47,13 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         with self.containers_and_load_lock:
             self.containers_and_load[free] = 0
         sleep(1)
+        print("New endserver container started at " + free)
+        self.round_robin_index += 1
         return free
     
     def LeAutoScaler(self):
-        # print("Auto scaler runs...")
-        # print(self.containers_and_load.copy())
+        print("Auto scaler runs...")
+        print(self.containers_and_load.copy())
         if len(self.containers_and_load) == 0 :
             return
         if self.auto_scaler_type == 1:
@@ -59,7 +61,8 @@ class Server(trial_1_pb2_grpc.AlertServicer):
             for key, value in self.containers_and_load.copy().items():
                 containerId = "endserverContainer" + key
                 cpu_usage = self.get_cpu_usage(containerId)
-                if cpu_usage > 0.8:
+                print(cpu_usage)
+                if len(self.containers_and_load)<10 and cpu_usage > 0.005:
                     logger.debug("Increasing instances")
                     self.add_end_server_container()
                 elif cpu_usage == 0:
@@ -73,9 +76,8 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         elif self.auto_scaler_type == 2:
             logger.debug("AutoScaling via queueing theory")
             for key, value in self.containers_and_load.copy().items(): 
-                if value > 7:
+                if len(self.containers_and_load)<10 and value > 5:
                     # Increase instances
-                    # DOUBT
                     self.add_end_server_container()
                 elif value == 0:
                     # Call the processing function for values equal to 0
@@ -86,10 +88,10 @@ class Server(trial_1_pb2_grpc.AlertServicer):
                     # Remove the entry from the dictionary
                     with self.containers_and_load_lock:
                         del self.containers_and_load[key]
-    def run_function_every_10_seconds(self):
+    def run_function_every_secs_seconds(self, secs):
         while True:
             self.LeAutoScaler()
-            sleep(10);
+            sleep(secs);
     
     def start_end_server_container(self):
         logger.debug("Starting end server container...")
@@ -108,7 +110,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         if not containers:
             free = self.first_free_container_port()
             docker_client.containers.run(
-                "endserver",
+                "endserversleep",
                 name="endserverContainer" + free,
                 detach=True,
                 network="cloudtemp",
@@ -205,6 +207,8 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         docker_client = docker.from_env()
         container = docker_client.containers.get(containerPort)
         container.remove(force=True)
+        print("Endserver container at " + containerPort + " removed")
+        self.round_robin_index -= 1
 
     def removeAllContainers(self):
         logger.debug("Setting up server...")
@@ -217,26 +221,29 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         client = docker.from_env()
         container = client.containers.get(container_id)
         stats = container.stats(stream=False)
+        # print(stats)
         return (
-            stats["cpu_stats"]["cpu_usage"]["total_usage"]
+            100 * stats["cpu_stats"]["cpu_usage"]["total_usage"]
             / stats["cpu_stats"]["system_cpu_usage"]
+            # stats["CPU %"]
         )
 
     def InvokeMethod(self, request, context):
         # Perform load balancing here across the end server containers that are running to determine which end server to issue the job to
 
-        if self.load_balancing_type == 0:
+        if self.load_balancing_type == 1:
             # Least connections load balancing
             selected_port = min(
                 self.containers_and_load, key=self.containers_and_load.get
             )
+            
 
-        elif self.load_balancing_type == 1:
+        elif self.load_balancing_type == 2:
             # Random choice
             n = randint(0, len(self.containers_and_load) - 1)
             selected_port = list(self.containers_and_load.keys())[n]
 
-        elif self.load_balancing_type == 2:
+        elif self.load_balancing_type == 3:
             # Power of two choices
             n1 = randint(0, len(self.containers_and_load) - 1)
             n2 = randint(0, len(self.containers_and_load) - 1)
@@ -249,7 +256,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
             else:
                 selected_port = n2
 
-        elif self.load_balancing_type == 3:
+        elif self.load_balancing_type == 4:
             # Round robin
             if self.count == 0:
                 if self.round_robin_index % 2 == 0:
@@ -266,7 +273,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
 
             self.count -= 1
 
-        elif self.load_balancing_type == 4:
+        elif self.load_balancing_type == 5:
             # IP hash
             octets = request.ip.split(".")
             hash_val = 0
