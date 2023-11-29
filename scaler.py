@@ -50,8 +50,8 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         return free
     
     def LeAutoScaler(self):
-        print("Auto scaler runs...")
-        print(self.containers_and_load.copy())
+        # print("Auto scaler runs...")
+        # print(self.containers_and_load.copy())
         if len(self.containers_and_load) == 0 :
             return
         if self.auto_scaler_type == 1:
@@ -63,7 +63,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
                     logger.debug("Increasing instances")
                     self.add_end_server_container()
                 elif cpu_usage == 0:
-                    if key == '50010' or key == '50011':
+                    if key[len(key)-1] == '0' or key[len(key)-1] == '1':
                         continue
                     logger.debug("Decreasing instances")
                     self.removeContainer(containerId)
@@ -73,14 +73,14 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         elif self.auto_scaler_type == 2:
             logger.debug("AutoScaling via queueing theory")
             for key, value in self.containers_and_load.copy().items(): 
-                if value > 1:
+                if value > 7:
                     # Increase instances
                     # DOUBT
                     self.add_end_server_container()
                 elif value == 0:
                     # Call the processing function for values equal to 0
                     containerId = "endserverContainer" + key
-                    if key == '50010' or key == '50011':
+                    if key[len(key)-1] == '0' or key[len(key)-1] == '1':
                         continue
                     self.removeContainer(containerId)
                     # Remove the entry from the dictionary
@@ -108,7 +108,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         if not containers:
             free = self.first_free_container_port()
             docker_client.containers.run(
-                "endserversleep",
+                "endserver",
                 name="endserverContainer" + free,
                 detach=True,
                 network="cloudtemp",
