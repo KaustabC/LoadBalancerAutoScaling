@@ -5,7 +5,11 @@ import grpc
 import trial_1_pb2
 import trial_1_pb2_grpc
 import random
+import sys
 
+if len(sys.argv) <2 or len(sys.argv) > 2:
+        print("error, please enter port number of your tenant as the only command line argument")
+        sys.exit()
 logging.basicConfig(
     filename="client.log", format="%(asctime)s %(message)s", filemode="w"
 )
@@ -14,7 +18,7 @@ logger.setLevel(logging.DEBUG)
 
 # IP_addr_intermediate = "172.17.63.199"
 IP_addr_intermediate = "localhost"
-port_intermediate = "60000"
+port_intermediate = sys.argv[1]
 
 
 def get_self_ip():
@@ -34,7 +38,6 @@ def get_self_ip():
 
 def run():
     ip = get_self_ip()
-
     print("Select from the following services: ")
     print("0. Echo")
     print("1. Simple interest calculation")

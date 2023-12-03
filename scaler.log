@@ -1,165 +1,339 @@
-2023-11-29 16:46:50,081 Before intialise() call
-2023-11-29 16:46:50,082 Initialising the initialiser server...
-2023-11-29 16:46:50,095 Added multithreading to the initialiser server...
-2023-11-29 16:46:50,099 Initialised the initialiser server object...
-2023-11-29 16:46:50,114 Server started listening on port 40040...
-2023-11-29 16:46:57,892 Initialising the connector server...
-2023-11-29 16:46:57,892 Added multithreading to the connector server...
-2023-11-29 16:46:57,893 Starting end server container...
-2023-11-29 16:46:57,893 Setting up server...
-2023-11-29 16:46:57,894 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:46:57,895 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:46:57,896 Found 'credsStore' section
-2023-11-29 16:46:57,949 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:46:57,967 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=0&size=0&trunc_cmd=0 HTTP/1.1" 200 None
-2023-11-29 16:46:57,986 http://localhost:None "GET /v1.43/containers/bc9449098acc8d7a0df80047d6b4ed482ae01a4b5316480e28c0c29b5a4a3130/json HTTP/1.1" 200 None
-2023-11-29 16:46:58,002 http://localhost:None "GET /v1.43/containers/a4ae63a6328c70f8fbb9b7ec80fd9b58b1eaa45a4d30523a8aee75a11112b42b/json HTTP/1.1" 200 None
-2023-11-29 16:46:58,775 http://localhost:None "DELETE /v1.43/containers/bc9449098acc8d7a0df80047d6b4ed482ae01a4b5316480e28c0c29b5a4a3130?v=False&link=False&force=True HTTP/1.1" 204 0
-2023-11-29 16:46:59,460 http://localhost:None "DELETE /v1.43/containers/a4ae63a6328c70f8fbb9b7ec80fd9b58b1eaa45a4d30523a8aee75a11112b42b?v=False&link=False&force=True HTTP/1.1" 204 0
-2023-11-29 16:46:59,463 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:46:59,464 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:46:59,465 Found 'credsStore' section
-2023-11-29 16:46:59,503 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:46:59,505 Fetched docker env information...
-2023-11-29 16:46:59,518 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
-2023-11-29 16:46:59,520 Extracted list of containers
-2023-11-29 16:46:59,629 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50010 HTTP/1.1" 201 None
-2023-11-29 16:46:59,643 http://localhost:None "GET /v1.43/containers/8335f94e6e56b32b9824ed6e181f2ed3202cb8f88afcea87738883c893ae696c/json HTTP/1.1" 200 None
-2023-11-29 16:47:00,411 http://localhost:None "POST /v1.43/containers/8335f94e6e56b32b9824ed6e181f2ed3202cb8f88afcea87738883c893ae696c/start HTTP/1.1" 204 0
-2023-11-29 16:47:00,530 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50011 HTTP/1.1" 201 None
-2023-11-29 16:47:00,545 http://localhost:None "GET /v1.43/containers/2957991b10dba0276cc1214bd1ac508223d5d0fd27e1b538ab80a3efc92f7e33/json HTTP/1.1" 200 None
-2023-11-29 16:47:01,103 http://localhost:None "POST /v1.43/containers/2957991b10dba0276cc1214bd1ac508223d5d0fd27e1b538ab80a3efc92f7e33/start HTTP/1.1" 204 0
-2023-11-29 16:47:01,111 Primary end server containers started.
-2023-11-29 16:47:01,111 Reached end of start_end_server_container()
-2023-11-29 16:47:01,113 Initialised the connector server object...
-2023-11-29 16:47:01,115 AutoScaling via threshold base analysis
-2023-11-29 16:47:01,115 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:01,116 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:01,117 Found 'credsStore' section
-2023-11-29 16:47:01,130 Server started listening on port 60000...
-2023-11-29 16:47:01,156 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:01,170 http://localhost:None "GET /v1.43/containers/endserverContainer50010/json HTTP/1.1" 200 None
-2023-11-29 16:47:02,209 http://localhost:None "GET /v1.43/containers/8335f94e6e56b32b9824ed6e181f2ed3202cb8f88afcea87738883c893ae696c/stats?stream=False HTTP/1.1" 200 None
-2023-11-29 16:47:02,215 Increasing instances
-2023-11-29 16:47:02,218 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:02,218 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:02,219 Found 'credsStore' section
-2023-11-29 16:47:02,271 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:02,506 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50012 HTTP/1.1" 201 None
-2023-11-29 16:47:02,532 http://localhost:None "GET /v1.43/containers/364012d405c7109d3a98c988c36dc600dea73a667b4003b59e3562b8eaffa6e5/json HTTP/1.1" 200 None
-2023-11-29 16:47:03,134 http://localhost:None "POST /v1.43/containers/364012d405c7109d3a98c988c36dc600dea73a667b4003b59e3562b8eaffa6e5/start HTTP/1.1" 204 0
-2023-11-29 16:47:04,142 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:04,143 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:04,144 Found 'credsStore' section
-2023-11-29 16:47:04,176 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:04,192 http://localhost:None "GET /v1.43/containers/endserverContainer50011/json HTTP/1.1" 200 None
-2023-11-29 16:47:05,236 http://localhost:None "GET /v1.43/containers/2957991b10dba0276cc1214bd1ac508223d5d0fd27e1b538ab80a3efc92f7e33/stats?stream=False HTTP/1.1" 200 None
-2023-11-29 16:47:05,239 Increasing instances
-2023-11-29 16:47:05,240 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:05,240 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:05,241 Found 'credsStore' section
-2023-11-29 16:47:05,282 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:05,515 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50013 HTTP/1.1" 201 None
-2023-11-29 16:47:05,532 http://localhost:None "GET /v1.43/containers/c834ce1ed2fa549abbbe6a39c63816f2df8ef4e546bc57b9bbe39869a6d41c62/json HTTP/1.1" 200 None
-2023-11-29 16:47:06,258 http://localhost:None "POST /v1.43/containers/c834ce1ed2fa549abbbe6a39c63816f2df8ef4e546bc57b9bbe39869a6d41c62/start HTTP/1.1" 204 0
-2023-11-29 16:47:12,287 AutoScaling via threshold base analysis
-2023-11-29 16:47:12,288 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:12,288 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:12,289 Found 'credsStore' section
-2023-11-29 16:47:12,321 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:12,466 http://localhost:None "GET /v1.43/containers/endserverContainer50010/json HTTP/1.1" 200 None
-2023-11-29 16:47:14,041 http://localhost:None "GET /v1.43/containers/8335f94e6e56b32b9824ed6e181f2ed3202cb8f88afcea87738883c893ae696c/stats?stream=False HTTP/1.1" 200 None
-2023-11-29 16:47:14,059 Increasing instances
-2023-11-29 16:47:14,060 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:14,061 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:14,062 Found 'credsStore' section
-2023-11-29 16:47:14,110 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:14,344 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50014 HTTP/1.1" 201 None
-2023-11-29 16:47:14,369 http://localhost:None "GET /v1.43/containers/1dcf59df0d0796b5a197d3475423e26ea3a0f6f1447ee79207e1157c36175898/json HTTP/1.1" 200 None
-2023-11-29 16:47:15,087 http://localhost:None "POST /v1.43/containers/1dcf59df0d0796b5a197d3475423e26ea3a0f6f1447ee79207e1157c36175898/start HTTP/1.1" 204 0
-2023-11-29 16:47:16,103 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:16,103 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:16,103 Found 'credsStore' section
-2023-11-29 16:47:16,140 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:16,159 http://localhost:None "GET /v1.43/containers/endserverContainer50011/json HTTP/1.1" 200 None
-2023-11-29 16:47:17,195 http://localhost:None "GET /v1.43/containers/2957991b10dba0276cc1214bd1ac508223d5d0fd27e1b538ab80a3efc92f7e33/stats?stream=False HTTP/1.1" 200 None
-2023-11-29 16:47:17,198 Increasing instances
-2023-11-29 16:47:17,198 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:17,199 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:17,199 Found 'credsStore' section
-2023-11-29 16:47:17,245 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:17,483 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50015 HTTP/1.1" 201 None
-2023-11-29 16:47:17,500 http://localhost:None "GET /v1.43/containers/aba7aa464e99c4fca051596e0585dd0ca473b196d7f7e649b8d34ba5a2a0b12f/json HTTP/1.1" 200 None
-2023-11-29 16:47:18,419 http://localhost:None "POST /v1.43/containers/aba7aa464e99c4fca051596e0585dd0ca473b196d7f7e649b8d34ba5a2a0b12f/start HTTP/1.1" 204 0
-2023-11-29 16:47:19,424 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:19,499 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:19,500 Found 'credsStore' section
-2023-11-29 16:47:19,531 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:19,544 http://localhost:None "GET /v1.43/containers/endserverContainer50012/json HTTP/1.1" 200 None
-2023-11-29 16:47:20,577 http://localhost:None "GET /v1.43/containers/364012d405c7109d3a98c988c36dc600dea73a667b4003b59e3562b8eaffa6e5/stats?stream=False HTTP/1.1" 200 None
-2023-11-29 16:47:20,580 Increasing instances
-2023-11-29 16:47:20,581 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:20,581 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:20,582 Found 'credsStore' section
-2023-11-29 16:47:20,741 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:20,841 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50016 HTTP/1.1" 201 None
-2023-11-29 16:47:20,856 http://localhost:None "GET /v1.43/containers/12ce2d16bed348af59f95c30d4afbdc486466db33bbd0bbe181ddc55d1f0378d/json HTTP/1.1" 200 None
-2023-11-29 16:47:21,704 http://localhost:None "POST /v1.43/containers/12ce2d16bed348af59f95c30d4afbdc486466db33bbd0bbe181ddc55d1f0378d/start HTTP/1.1" 204 0
-2023-11-29 16:47:22,722 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:22,723 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:22,723 Found 'credsStore' section
-2023-11-29 16:47:22,748 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:22,760 http://localhost:None "GET /v1.43/containers/endserverContainer50013/json HTTP/1.1" 200 None
-2023-11-29 16:47:24,747 http://localhost:None "GET /v1.43/containers/c834ce1ed2fa549abbbe6a39c63816f2df8ef4e546bc57b9bbe39869a6d41c62/stats?stream=False HTTP/1.1" 200 None
-2023-11-29 16:47:24,749 Increasing instances
-2023-11-29 16:47:24,750 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:24,750 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:24,751 Found 'credsStore' section
-2023-11-29 16:47:24,779 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:25,016 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50017 HTTP/1.1" 201 None
-2023-11-29 16:47:25,032 http://localhost:None "GET /v1.43/containers/ed0653641487203a9eb753e39f9996e605b29fd9da1171de45d34fd881ea3e25/json HTTP/1.1" 200 None
-2023-11-29 16:47:25,871 http://localhost:None "POST /v1.43/containers/ed0653641487203a9eb753e39f9996e605b29fd9da1171de45d34fd881ea3e25/start HTTP/1.1" 204 0
-2023-11-29 16:47:31,543 Issuing job to end server container: 50010
-2023-11-29 16:47:31,543 Received function call for function: 0
-2023-11-29 16:47:31,892 AutoScaling via threshold base analysis
-2023-11-29 16:47:31,893 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:31,893 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:31,894 Found 'credsStore' section
-2023-11-29 16:47:31,985 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:32,001 http://localhost:None "GET /v1.43/containers/endserverContainer50010/json HTTP/1.1" 200 None
-2023-11-29 16:47:33,141 http://localhost:None "GET /v1.43/containers/8335f94e6e56b32b9824ed6e181f2ed3202cb8f88afcea87738883c893ae696c/stats?stream=False HTTP/1.1" 200 None
-2023-11-29 16:47:33,145 Increasing instances
-2023-11-29 16:47:33,146 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:33,147 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:33,149 Found 'credsStore' section
-2023-11-29 16:47:33,196 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:33,298 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50018 HTTP/1.1" 201 None
-2023-11-29 16:47:33,316 http://localhost:None "GET /v1.43/containers/0ef3053038bf286c0546b3743b4df4dae0a80dd841e3e9e0bce2860b29911e5a/json HTTP/1.1" 200 None
-2023-11-29 16:47:34,057 http://localhost:None "POST /v1.43/containers/0ef3053038bf286c0546b3743b4df4dae0a80dd841e3e9e0bce2860b29911e5a/start HTTP/1.1" 204 0
-2023-11-29 16:47:35,062 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:35,062 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:35,062 Found 'credsStore' section
-2023-11-29 16:47:35,249 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:35,265 http://localhost:None "GET /v1.43/containers/endserverContainer50011/json HTTP/1.1" 200 None
-2023-11-29 16:47:36,302 http://localhost:None "GET /v1.43/containers/2957991b10dba0276cc1214bd1ac508223d5d0fd27e1b538ab80a3efc92f7e33/stats?stream=False HTTP/1.1" 200 None
-2023-11-29 16:47:36,305 Increasing instances
-2023-11-29 16:47:36,306 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:36,307 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:36,308 Found 'credsStore' section
-2023-11-29 16:47:36,473 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:36,590 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50019 HTTP/1.1" 201 None
-2023-11-29 16:47:36,609 http://localhost:None "GET /v1.43/containers/cd193a87e826dd076e342f3efb772e064ca3a49dd32191d961960c4e66466ab9/json HTTP/1.1" 200 None
-2023-11-29 16:47:37,230 http://localhost:None "POST /v1.43/containers/cd193a87e826dd076e342f3efb772e064ca3a49dd32191d961960c4e66466ab9/start HTTP/1.1" 204 0
-2023-11-29 16:47:38,236 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:38,237 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:38,238 Found 'credsStore' section
-2023-11-29 16:47:38,447 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:47:38,464 http://localhost:None "GET /v1.43/containers/endserverContainer50012/json HTTP/1.1" 200 None
-2023-11-29 16:47:39,501 http://localhost:None "GET /v1.43/containers/364012d405c7109d3a98c988c36dc600dea73a667b4003b59e3562b8eaffa6e5/stats?stream=False HTTP/1.1" 200 None
-2023-11-29 16:47:39,505 Increasing instances
-2023-11-29 16:47:39,506 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
-2023-11-29 16:47:39,506 Found file at path: C:\Users\harsh\.docker\config.json
-2023-11-29 16:47:39,507 Found 'credsStore' section
-2023-11-29 16:47:39,553 http://localhost:None "GET /version HTTP/1.1" 200 None
-2023-11-29 16:48:31,716 Echoed value: 1.0
-2023-11-29 16:48:31,719 Returning value to client...
+2023-12-03 19:21:43,642 Before intialise() call
+2023-12-03 19:21:43,643 Initialising the initialiser server...
+2023-12-03 19:21:43,682 Added multithreading to the initialiser server...
+2023-12-03 19:21:43,688 Initialised the initialiser server object...
+2023-12-03 19:21:43,695 Server started listening on port 40040...
+2023-12-03 19:21:56,216 Initialising the connector server...
+2023-12-03 19:21:56,216 Added multithreading to the connector server...
+2023-12-03 19:21:56,217 Starting end server container...
+2023-12-03 19:21:56,218 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-12-03 19:21:56,219 Found file at path: C:\Users\harsh\.docker\config.json
+2023-12-03 19:21:56,219 Found 'credsStore' section
+2023-12-03 19:21:56,282 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-12-03 19:21:56,284 Fetched docker env information...
+2023-12-03 19:21:56,299 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
+2023-12-03 19:21:56,302 Extracted list of containers
+2023-12-03 19:21:56,435 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50010 HTTP/1.1" 201 None
+2023-12-03 19:21:56,450 http://localhost:None "GET /v1.43/containers/1f433419669728b43ccfe1ad8f57914cdb68b14fc83b7472bf57c553c2aeac10/json HTTP/1.1" 200 None
+2023-12-03 19:21:57,700 http://localhost:None "POST /v1.43/containers/1f433419669728b43ccfe1ad8f57914cdb68b14fc83b7472bf57c553c2aeac10/start HTTP/1.1" 204 0
+2023-12-03 19:21:57,768 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50011 HTTP/1.1" 201 None
+2023-12-03 19:21:57,780 http://localhost:None "GET /v1.43/containers/7bc1708425a5efc814b32e4fc189776e133a1c802f7a853e51743604c6b3f3dd/json HTTP/1.1" 200 None
+2023-12-03 19:21:58,384 http://localhost:None "POST /v1.43/containers/7bc1708425a5efc814b32e4fc189776e133a1c802f7a853e51743604c6b3f3dd/start HTTP/1.1" 204 0
+2023-12-03 19:21:58,386 Primary end server containers started.
+2023-12-03 19:21:58,386 Reached end of start_end_server_container()
+2023-12-03 19:21:58,388 Initialised the connector server object...
+2023-12-03 19:21:58,389 AutoScaling via queueing theory
+2023-12-03 19:21:58,390 Server started listening on port 60000...
+2023-12-03 19:22:03,402 AutoScaling via queueing theory
+2023-12-03 19:22:08,417 AutoScaling via queueing theory
+2023-12-03 19:22:13,423 AutoScaling via queueing theory
+2023-12-03 19:22:15,859 Initialising the connector server...
+2023-12-03 19:22:15,859 Added multithreading to the connector server...
+2023-12-03 19:22:15,860 Starting end server container...
+2023-12-03 19:22:15,861 Trying paths: ['C:\\Users\\harsh\\.docker\\config.json', 'C:\\Users\\harsh\\.dockercfg']
+2023-12-03 19:22:15,861 Found file at path: C:\Users\harsh\.docker\config.json
+2023-12-03 19:22:15,862 Found 'credsStore' section
+2023-12-03 19:22:15,896 http://localhost:None "GET /version HTTP/1.1" 200 None
+2023-12-03 19:22:15,897 Fetched docker env information...
+2023-12-03 19:22:15,911 http://localhost:None "GET /v1.43/containers/json?limit=-1&all=1&size=0&trunc_cmd=0&filters=%7B%22name%22%3A+%5B%22endserverContainer%22%5D%7D HTTP/1.1" 200 None
+2023-12-03 19:22:15,927 http://localhost:None "GET /v1.43/containers/7bc1708425a5efc814b32e4fc189776e133a1c802f7a853e51743604c6b3f3dd/json HTTP/1.1" 200 None
+2023-12-03 19:22:15,943 http://localhost:None "GET /v1.43/containers/1f433419669728b43ccfe1ad8f57914cdb68b14fc83b7472bf57c553c2aeac10/json HTTP/1.1" 200 None
+2023-12-03 19:22:15,946 Extracted list of containers
+2023-12-03 19:22:16,001 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50020 HTTP/1.1" 201 None
+2023-12-03 19:22:16,017 http://localhost:None "GET /v1.43/containers/b1dab0f40269fed97b444e7e3d733e08a43e5c232e9a6ae7645ce2d6f73d83ea/json HTTP/1.1" 200 None
+2023-12-03 19:22:16,512 http://localhost:None "POST /v1.43/containers/b1dab0f40269fed97b444e7e3d733e08a43e5c232e9a6ae7645ce2d6f73d83ea/start HTTP/1.1" 204 0
+2023-12-03 19:22:16,583 http://localhost:None "POST /v1.43/containers/create?name=endserverContainer50021 HTTP/1.1" 201 None
+2023-12-03 19:22:16,594 http://localhost:None "GET /v1.43/containers/3fe3b49c43aa41358efdcbe4def3599b2d78186a97a56922819c47a45a0200bc/json HTTP/1.1" 200 None
+2023-12-03 19:22:17,177 http://localhost:None "POST /v1.43/containers/3fe3b49c43aa41358efdcbe4def3599b2d78186a97a56922819c47a45a0200bc/start HTTP/1.1" 204 0
+2023-12-03 19:22:17,181 Primary end server containers started.
+2023-12-03 19:22:17,182 Reached end of start_end_server_container()
+2023-12-03 19:22:17,185 Initialised the connector server object...
+2023-12-03 19:22:17,186 AutoScaling via queueing theory
+2023-12-03 19:22:17,201 Server started listening on port 60001...
+2023-12-03 19:22:18,429 AutoScaling via queueing theory
+2023-12-03 19:22:22,192 AutoScaling via queueing theory
+2023-12-03 19:22:23,440 AutoScaling via queueing theory
+2023-12-03 19:22:27,201 AutoScaling via queueing theory
+2023-12-03 19:22:28,443 AutoScaling via queueing theory
+2023-12-03 19:22:32,204 AutoScaling via queueing theory
+2023-12-03 19:22:33,457 AutoScaling via queueing theory
+2023-12-03 19:22:37,214 AutoScaling via queueing theory
+2023-12-03 19:22:38,465 AutoScaling via queueing theory
+2023-12-03 19:22:42,221 AutoScaling via queueing theory
+2023-12-03 19:22:43,473 AutoScaling via queueing theory
+2023-12-03 19:22:47,237 AutoScaling via queueing theory
+2023-12-03 19:22:48,481 AutoScaling via queueing theory
+2023-12-03 19:22:52,239 AutoScaling via queueing theory
+2023-12-03 19:22:53,499 AutoScaling via queueing theory
+2023-12-03 19:22:57,253 AutoScaling via queueing theory
+2023-12-03 19:22:58,505 AutoScaling via queueing theory
+2023-12-03 19:23:02,267 AutoScaling via queueing theory
+2023-12-03 19:23:03,510 AutoScaling via queueing theory
+2023-12-03 19:23:07,278 AutoScaling via queueing theory
+2023-12-03 19:23:08,518 AutoScaling via queueing theory
+2023-12-03 19:23:12,290 AutoScaling via queueing theory
+2023-12-03 19:23:13,525 AutoScaling via queueing theory
+2023-12-03 19:23:17,294 AutoScaling via queueing theory
+2023-12-03 19:23:18,538 AutoScaling via queueing theory
+2023-12-03 19:23:22,306 AutoScaling via queueing theory
+2023-12-03 19:23:23,548 AutoScaling via queueing theory
+2023-12-03 19:23:27,316 AutoScaling via queueing theory
+2023-12-03 19:23:28,560 AutoScaling via queueing theory
+2023-12-03 19:23:32,322 AutoScaling via queueing theory
+2023-12-03 19:23:33,572 AutoScaling via queueing theory
+2023-12-03 19:23:37,328 AutoScaling via queueing theory
+2023-12-03 19:23:38,584 AutoScaling via queueing theory
+2023-12-03 19:23:42,344 AutoScaling via queueing theory
+2023-12-03 19:23:43,594 AutoScaling via queueing theory
+2023-12-03 19:23:47,353 AutoScaling via queueing theory
+2023-12-03 19:23:48,602 AutoScaling via queueing theory
+2023-12-03 19:23:52,355 AutoScaling via queueing theory
+2023-12-03 19:23:53,618 AutoScaling via queueing theory
+2023-12-03 19:23:57,369 AutoScaling via queueing theory
+2023-12-03 19:23:58,625 AutoScaling via queueing theory
+2023-12-03 19:24:02,379 AutoScaling via queueing theory
+2023-12-03 19:24:03,641 AutoScaling via queueing theory
+2023-12-03 19:24:07,385 AutoScaling via queueing theory
+2023-12-03 19:24:08,645 AutoScaling via queueing theory
+2023-12-03 19:24:12,397 AutoScaling via queueing theory
+2023-12-03 19:24:13,659 AutoScaling via queueing theory
+2023-12-03 19:24:17,409 AutoScaling via queueing theory
+2023-12-03 19:24:18,663 AutoScaling via queueing theory
+2023-12-03 19:24:22,418 AutoScaling via queueing theory
+2023-12-03 19:24:23,669 AutoScaling via queueing theory
+2023-12-03 19:24:27,430 AutoScaling via queueing theory
+2023-12-03 19:24:28,674 AutoScaling via queueing theory
+2023-12-03 19:24:32,440 AutoScaling via queueing theory
+2023-12-03 19:24:33,677 AutoScaling via queueing theory
+2023-12-03 19:24:37,452 AutoScaling via queueing theory
+2023-12-03 19:24:38,687 AutoScaling via queueing theory
+2023-12-03 19:24:42,464 AutoScaling via queueing theory
+2023-12-03 19:24:43,699 AutoScaling via queueing theory
+2023-12-03 19:24:47,468 AutoScaling via queueing theory
+2023-12-03 19:24:48,712 AutoScaling via queueing theory
+2023-12-03 19:24:52,477 AutoScaling via queueing theory
+2023-12-03 19:24:53,726 AutoScaling via queueing theory
+2023-12-03 19:24:57,487 AutoScaling via queueing theory
+2023-12-03 19:24:58,730 AutoScaling via queueing theory
+2023-12-03 19:25:02,499 AutoScaling via queueing theory
+2023-12-03 19:25:03,743 AutoScaling via queueing theory
+2023-12-03 19:25:07,505 AutoScaling via queueing theory
+2023-12-03 19:25:08,749 AutoScaling via queueing theory
+2023-12-03 19:25:12,523 AutoScaling via queueing theory
+2023-12-03 19:25:13,758 AutoScaling via queueing theory
+2023-12-03 19:25:17,528 AutoScaling via queueing theory
+2023-12-03 19:25:18,762 AutoScaling via queueing theory
+2023-12-03 19:25:22,531 AutoScaling via queueing theory
+2023-12-03 19:25:23,765 AutoScaling via queueing theory
+2023-12-03 19:25:27,551 AutoScaling via queueing theory
+2023-12-03 19:25:28,768 AutoScaling via queueing theory
+2023-12-03 19:25:32,557 AutoScaling via queueing theory
+2023-12-03 19:25:33,782 AutoScaling via queueing theory
+2023-12-03 19:25:37,569 AutoScaling via queueing theory
+2023-12-03 19:25:38,841 AutoScaling via queueing theory
+2023-12-03 19:25:42,581 AutoScaling via queueing theory
+2023-12-03 19:25:43,849 AutoScaling via queueing theory
+2023-12-03 19:25:47,589 AutoScaling via queueing theory
+2023-12-03 19:25:48,851 AutoScaling via queueing theory
+2023-12-03 19:25:52,600 AutoScaling via queueing theory
+2023-12-03 19:25:53,861 AutoScaling via queueing theory
+2023-12-03 19:25:57,620 AutoScaling via queueing theory
+2023-12-03 19:25:58,866 AutoScaling via queueing theory
+2023-12-03 19:26:02,625 AutoScaling via queueing theory
+2023-12-03 19:26:03,869 AutoScaling via queueing theory
+2023-12-03 19:26:07,641 AutoScaling via queueing theory
+2023-12-03 19:26:08,871 AutoScaling via queueing theory
+2023-12-03 19:26:12,653 AutoScaling via queueing theory
+2023-12-03 19:26:13,884 AutoScaling via queueing theory
+2023-12-03 19:26:17,655 AutoScaling via queueing theory
+2023-12-03 19:26:18,886 AutoScaling via queueing theory
+2023-12-03 19:26:22,659 AutoScaling via queueing theory
+2023-12-03 19:26:23,892 AutoScaling via queueing theory
+2023-12-03 19:26:27,670 AutoScaling via queueing theory
+2023-12-03 19:26:28,898 AutoScaling via queueing theory
+2023-12-03 19:26:32,685 AutoScaling via queueing theory
+2023-12-03 19:26:33,902 AutoScaling via queueing theory
+2023-12-03 19:26:37,699 AutoScaling via queueing theory
+2023-12-03 19:26:38,912 AutoScaling via queueing theory
+2023-12-03 19:26:42,711 AutoScaling via queueing theory
+2023-12-03 19:26:43,924 AutoScaling via queueing theory
+2023-12-03 19:26:47,716 AutoScaling via queueing theory
+2023-12-03 19:26:48,954 AutoScaling via queueing theory
+2023-12-03 19:26:52,725 AutoScaling via queueing theory
+2023-12-03 19:26:53,962 AutoScaling via queueing theory
+2023-12-03 19:26:57,738 AutoScaling via queueing theory
+2023-12-03 19:26:58,967 AutoScaling via queueing theory
+2023-12-03 19:27:02,752 AutoScaling via queueing theory
+2023-12-03 19:27:03,973 AutoScaling via queueing theory
+2023-12-03 19:27:07,759 AutoScaling via queueing theory
+2023-12-03 19:27:08,974 AutoScaling via queueing theory
+2023-12-03 19:27:12,766 AutoScaling via queueing theory
+2023-12-03 19:27:13,981 AutoScaling via queueing theory
+2023-12-03 19:27:17,769 AutoScaling via queueing theory
+2023-12-03 19:27:18,997 AutoScaling via queueing theory
+2023-12-03 19:27:22,779 AutoScaling via queueing theory
+2023-12-03 19:27:24,011 AutoScaling via queueing theory
+2023-12-03 19:27:27,791 AutoScaling via queueing theory
+2023-12-03 19:27:29,021 AutoScaling via queueing theory
+2023-12-03 19:27:29,608 Issuing job to end server container: 50010
+2023-12-03 19:27:29,608 Received function call for function: 0
+2023-12-03 19:27:32,804 AutoScaling via queueing theory
+2023-12-03 19:27:34,029 AutoScaling via queueing theory
+2023-12-03 19:27:37,810 AutoScaling via queueing theory
+2023-12-03 19:27:39,039 AutoScaling via queueing theory
+2023-12-03 19:27:42,813 AutoScaling via queueing theory
+2023-12-03 19:27:44,048 AutoScaling via queueing theory
+2023-12-03 19:27:47,829 AutoScaling via queueing theory
+2023-12-03 19:27:48,305 Issuing job to end server container: 50020
+2023-12-03 19:27:48,305 Received function call for function: 2
+2023-12-03 19:27:48,306 Returning value to client...
+2023-12-03 19:27:48,322 Exception calling application: local variable 'response' referenced before assignment
+Traceback (most recent call last):
+  File "C:\Python310\lib\site-packages\grpc\_server.py", line 552, in _call_behavior
+    response_or_iterator = behavior(argument, context)
+  File "C:\Users\harsh\Documents\GitHub\LoadBalancerAutoScaling\scaler.py", line 295, in InvokeMethod
+    return_val = self.IssueJob(
+  File "C:\Users\harsh\Documents\GitHub\LoadBalancerAutoScaling\scaler.py", line 205, in IssueJob
+    return trial_1_pb2.returnValue(val=response.val)
+UnboundLocalError: local variable 'response' referenced before assignment
+2023-12-03 19:27:49,058 AutoScaling via queueing theory
+2023-12-03 19:27:52,844 AutoScaling via queueing theory
+2023-12-03 19:27:54,073 AutoScaling via queueing theory
+2023-12-03 19:27:57,852 AutoScaling via queueing theory
+2023-12-03 19:27:59,076 AutoScaling via queueing theory
+2023-12-03 19:28:02,858 AutoScaling via queueing theory
+2023-12-03 19:28:03,365 Issuing job to end server container: 50021
+2023-12-03 19:28:03,366 Received function call for function: 0
+2023-12-03 19:28:04,084 AutoScaling via queueing theory
+2023-12-03 19:28:07,867 AutoScaling via queueing theory
+2023-12-03 19:28:09,095 AutoScaling via queueing theory
+2023-12-03 19:28:12,881 AutoScaling via queueing theory
+2023-12-03 19:28:14,098 AutoScaling via queueing theory
+2023-12-03 19:28:17,884 AutoScaling via queueing theory
+2023-12-03 19:28:19,100 AutoScaling via queueing theory
+2023-12-03 19:28:22,899 AutoScaling via queueing theory
+2023-12-03 19:28:24,103 AutoScaling via queueing theory
+2023-12-03 19:28:27,914 AutoScaling via queueing theory
+2023-12-03 19:28:29,114 AutoScaling via queueing theory
+2023-12-03 19:28:29,726 Echoed value: 1.0
+2023-12-03 19:28:29,727 Returning value to client...
+2023-12-03 19:28:32,924 AutoScaling via queueing theory
+2023-12-03 19:28:34,123 AutoScaling via queueing theory
+2023-12-03 19:28:37,932 AutoScaling via queueing theory
+2023-12-03 19:28:39,135 AutoScaling via queueing theory
+2023-12-03 19:28:42,943 AutoScaling via queueing theory
+2023-12-03 19:28:44,270 AutoScaling via queueing theory
+2023-12-03 19:28:47,952 AutoScaling via queueing theory
+2023-12-03 19:28:49,279 AutoScaling via queueing theory
+2023-12-03 19:28:52,969 AutoScaling via queueing theory
+2023-12-03 19:28:54,289 AutoScaling via queueing theory
+2023-12-03 19:28:57,983 AutoScaling via queueing theory
+2023-12-03 19:28:59,292 AutoScaling via queueing theory
+2023-12-03 19:29:02,989 AutoScaling via queueing theory
+2023-12-03 19:29:03,564 Echoed value: 1.0
+2023-12-03 19:29:03,566 Returning value to client...
+2023-12-03 19:29:04,297 AutoScaling via queueing theory
+2023-12-03 19:29:07,997 AutoScaling via queueing theory
+2023-12-03 19:29:09,306 AutoScaling via queueing theory
+2023-12-03 19:29:13,000 AutoScaling via queueing theory
+2023-12-03 19:29:14,318 AutoScaling via queueing theory
+2023-12-03 19:29:18,011 AutoScaling via queueing theory
+2023-12-03 19:29:19,330 AutoScaling via queueing theory
+2023-12-03 19:29:23,021 AutoScaling via queueing theory
+2023-12-03 19:29:24,334 AutoScaling via queueing theory
+2023-12-03 19:29:28,029 AutoScaling via queueing theory
+2023-12-03 19:29:29,335 AutoScaling via queueing theory
+2023-12-03 19:29:33,034 AutoScaling via queueing theory
+2023-12-03 19:29:34,343 AutoScaling via queueing theory
+2023-12-03 19:29:38,043 AutoScaling via queueing theory
+2023-12-03 19:29:39,347 AutoScaling via queueing theory
+2023-12-03 19:29:43,054 AutoScaling via queueing theory
+2023-12-03 19:29:44,351 AutoScaling via queueing theory
+2023-12-03 19:29:48,058 AutoScaling via queueing theory
+2023-12-03 19:29:49,355 AutoScaling via queueing theory
+2023-12-03 19:29:53,064 AutoScaling via queueing theory
+2023-12-03 19:29:54,368 AutoScaling via queueing theory
+2023-12-03 19:29:58,066 AutoScaling via queueing theory
+2023-12-03 19:29:59,374 AutoScaling via queueing theory
+2023-12-03 19:30:03,074 AutoScaling via queueing theory
+2023-12-03 19:30:04,385 AutoScaling via queueing theory
+2023-12-03 19:30:08,085 AutoScaling via queueing theory
+2023-12-03 19:30:09,395 AutoScaling via queueing theory
+2023-12-03 19:30:13,091 AutoScaling via queueing theory
+2023-12-03 19:30:14,409 AutoScaling via queueing theory
+2023-12-03 19:30:18,106 AutoScaling via queueing theory
+2023-12-03 19:30:19,416 AutoScaling via queueing theory
+2023-12-03 19:30:23,109 AutoScaling via queueing theory
+2023-12-03 19:30:24,432 AutoScaling via queueing theory
+2023-12-03 19:30:28,111 AutoScaling via queueing theory
+2023-12-03 19:30:29,435 AutoScaling via queueing theory
+2023-12-03 19:30:33,120 AutoScaling via queueing theory
+2023-12-03 19:30:34,439 AutoScaling via queueing theory
+2023-12-03 19:30:38,122 AutoScaling via queueing theory
+2023-12-03 19:30:39,451 AutoScaling via queueing theory
+2023-12-03 19:30:43,133 AutoScaling via queueing theory
+2023-12-03 19:30:44,457 AutoScaling via queueing theory
+2023-12-03 19:30:48,150 AutoScaling via queueing theory
+2023-12-03 19:30:49,472 AutoScaling via queueing theory
+2023-12-03 19:30:53,166 AutoScaling via queueing theory
+2023-12-03 19:30:54,488 AutoScaling via queueing theory
+2023-12-03 19:30:58,179 AutoScaling via queueing theory
+2023-12-03 19:30:59,499 AutoScaling via queueing theory
+2023-12-03 19:31:03,184 AutoScaling via queueing theory
+2023-12-03 19:31:04,507 AutoScaling via queueing theory
+2023-12-03 19:31:08,186 AutoScaling via queueing theory
+2023-12-03 19:31:09,519 AutoScaling via queueing theory
+2023-12-03 19:31:13,203 AutoScaling via queueing theory
+2023-12-03 19:31:14,536 AutoScaling via queueing theory
+2023-12-03 19:31:18,211 AutoScaling via queueing theory
+2023-12-03 19:31:19,681 AutoScaling via queueing theory
+2023-12-03 19:31:23,225 AutoScaling via queueing theory
+2023-12-03 19:31:24,689 AutoScaling via queueing theory
+2023-12-03 19:31:28,236 AutoScaling via queueing theory
+2023-12-03 19:31:29,693 AutoScaling via queueing theory
+2023-12-03 19:31:33,249 AutoScaling via queueing theory
+2023-12-03 19:31:34,706 AutoScaling via queueing theory
+2023-12-03 19:31:38,252 AutoScaling via queueing theory
+2023-12-03 19:31:39,725 AutoScaling via queueing theory
+2023-12-03 19:31:43,255 AutoScaling via queueing theory
+2023-12-03 19:31:44,729 AutoScaling via queueing theory
+2023-12-03 19:31:48,263 AutoScaling via queueing theory
+2023-12-03 19:31:49,746 AutoScaling via queueing theory
+2023-12-03 19:31:53,278 AutoScaling via queueing theory
+2023-12-03 19:31:54,755 AutoScaling via queueing theory
+2023-12-03 19:31:58,286 AutoScaling via queueing theory
+2023-12-03 19:31:59,765 AutoScaling via queueing theory
+2023-12-03 19:32:03,290 AutoScaling via queueing theory
+2023-12-03 19:32:04,772 AutoScaling via queueing theory
+2023-12-03 19:32:08,296 AutoScaling via queueing theory
+2023-12-03 19:32:09,822 AutoScaling via queueing theory
+2023-12-03 19:32:13,300 AutoScaling via queueing theory
+2023-12-03 19:32:14,829 AutoScaling via queueing theory
+2023-12-03 19:32:18,342 AutoScaling via queueing theory
+2023-12-03 19:32:19,839 AutoScaling via queueing theory
+2023-12-03 19:32:23,359 AutoScaling via queueing theory
+2023-12-03 19:32:24,853 AutoScaling via queueing theory
+2023-12-03 19:32:28,372 AutoScaling via queueing theory
+2023-12-03 19:32:29,861 AutoScaling via queueing theory
+2023-12-03 19:32:33,382 AutoScaling via queueing theory
+2023-12-03 19:32:34,865 AutoScaling via queueing theory
+2023-12-03 19:32:38,395 AutoScaling via queueing theory
+2023-12-03 19:32:39,877 AutoScaling via queueing theory
+2023-12-03 19:32:43,405 AutoScaling via queueing theory
+2023-12-03 19:32:44,887 AutoScaling via queueing theory
+2023-12-03 19:32:48,419 AutoScaling via queueing theory
+2023-12-03 19:32:49,898 AutoScaling via queueing theory
+2023-12-03 19:32:53,422 AutoScaling via queueing theory
+2023-12-03 19:32:54,908 AutoScaling via queueing theory
+2023-12-03 19:32:58,425 AutoScaling via queueing theory
+2023-12-03 19:32:59,909 AutoScaling via queueing theory
+2023-12-03 19:33:03,442 AutoScaling via queueing theory
+2023-12-03 19:33:04,919 AutoScaling via queueing theory
+2023-12-03 19:33:08,453 AutoScaling via queueing theory
+2023-12-03 19:33:09,935 AutoScaling via queueing theory
+2023-12-03 19:33:13,467 AutoScaling via queueing theory
+2023-12-03 19:57:17,923 AutoScaling via queueing theory
+2023-12-03 19:57:21,388 AutoScaling via queueing theory
+2023-12-03 19:57:22,969 AutoScaling via queueing theory
+2023-12-03 19:57:26,399 AutoScaling via queueing theory
+2023-12-03 19:57:27,979 AutoScaling via queueing theory

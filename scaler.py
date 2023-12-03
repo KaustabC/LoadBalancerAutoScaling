@@ -13,7 +13,7 @@ import csv
 
 
 class Server(trial_1_pb2_grpc.AlertServicer):
-    def __init__(self, loadType, autoScaleType, services, base):
+    def __init__(self, loadType, autoScaleType, services, base, intermediate_count):
         self.IP_addr_end = "localhost"
         self.containers_and_load = {}
         self.containers_and_load_lock=threading.Lock()
@@ -22,6 +22,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         self.auto_scaler_type = autoScaleType
         self.round_robin_index = 0
         self.services = services
+        self.intermediateCount = intermediate_count 
         print("Services: " + str(self.services))
         self.base = base
         self.start_end_server_container()
@@ -96,7 +97,8 @@ class Server(trial_1_pb2_grpc.AlertServicer):
     def start_end_server_container(self):
         logger.debug("Starting end server container...")
         # Docker client setup
-        self.removeAllContainers()
+        if self.intermediateCount == 0:
+            self.removeAllContainers()
         docker_client = docker.from_env()
         logger.debug("Fetched docker env information...")
 
@@ -106,7 +108,7 @@ class Server(trial_1_pb2_grpc.AlertServicer):
         )
         # print(containers)
         logger.debug("Extracted list of containers")
-
+        containers = None
         if not containers:
             free = self.first_free_container_port()
             docker_client.containers.run(
@@ -356,7 +358,7 @@ class Initialiser(trial_1_pb2_grpc.AlertServicer):
         logger.debug("Added multithreading to the connector server...")
         trial_1_pb2_grpc.add_AlertServicer_to_server(
             Server(
-                loadType, autoScaleType, services, 50000 + 10 * self.intermediateCount
+                loadType, autoScaleType, services, 50000 + 10 * self.intermediateCount, self.intermediateCount
             ),
             server,
         )
