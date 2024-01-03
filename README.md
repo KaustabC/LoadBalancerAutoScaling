@@ -22,7 +22,7 @@ _Note:_
 _1) The operating systems of the machines on which the files are to be run must be Linux-based._
 _2) Ensure that all the required software and libraries are installed on your system. For more information on which libraries and software are needed, kindly go through technical design documentation._
 
-1) Clone the repository (either from the GitHub repo or by simply downloading the submitted folder).
+1) Clone the repository.
 2) Create a docker image named ‘endserversleep’ via instruction:
 ```
 docker build -t endserversleep .
